@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "verified_at": "2026-11-01T15:31:19.424933+00:00",
+  "reproduction_sha256": "b39bc83e7ca533216b4b3087a873f07f24e9b635c320e07aeea3a7107175ec74",
+  "reproduction_bytes": 179384513,
+  "reproduction_members": 2649,
+  "verified_manifest_members": 2648,
+  "results_sha256": "04e8a67b5c64af109458b41581825e480100cc41bb4989fb2cbf59c66bb76c0a",
+  "results_bytes": 1180018,
+  "results_verified_members": 44,
+  "crc_checked": true,
+  "note": "Both archives checked against the Linux member SHA-256 manifest; report assets extracted only after each member passed."
+}

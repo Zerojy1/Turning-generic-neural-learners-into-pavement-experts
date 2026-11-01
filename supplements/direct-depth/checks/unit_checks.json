@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "time": "2026-11-01T22:19:59+08:00",
+  "rows": [
+    {
+      "family": "mlp",
+      "parameters": 17298,
+      "same_A2_parameters_and_initial_weights": true,
+      "test_outcomes_do_not_affect_preprocessing": true,
+      "output": "depth"
+    },
+    {
+      "family": "gru",
+      "parameters": 18706,
+      "same_A2_parameters_and_initial_weights": true,
+      "test_outcomes_do_not_affect_preprocessing": true,
+      "output": "depth"
+    },
+    {
+      "family": "lstm",
+      "parameters": 23250,
+      "same_A2_parameters_and_initial_weights": true,
+      "test_outcomes_do_not_affect_preprocessing": true,
+      "output": "depth"
+    },
+    {
+      "family": "transformer",
+      "parameters": 72402,
+      "same_A2_parameters_and_initial_weights": true,
+      "test_outcomes_do_not_affect_preprocessing": true,
+      "output": "depth"
+    }
+  ],
+  "jobs": 100,
+  "outer_performance_used": false
+}

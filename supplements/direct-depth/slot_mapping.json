@@ -1,0 +1,149 @@
+{
+  "source": "original column prefixes and verbatim material labels; no unverified material merging",
+  "slots": [
+    {
+      "slot": 0,
+      "column": "Surf_AC13_I_SBS",
+      "position_id": 0,
+      "position": "surface",
+      "material_id": 0,
+      "material": "AC13_I_SBS"
+    },
+    {
+      "slot": 1,
+      "column": "Surf_AC13_II_SBS",
+      "position_id": 0,
+      "position": "surface",
+      "material_id": 1,
+      "material": "AC13_II_SBS"
+    },
+    {
+      "slot": 2,
+      "column": "Surf_SMA13",
+      "position_id": 0,
+      "position": "surface",
+      "material_id": 2,
+      "material": "SMA13"
+    },
+    {
+      "slot": 3,
+      "column": "Surf_PAC13",
+      "position_id": 0,
+      "position": "surface",
+      "material_id": 3,
+      "material": "PAC13"
+    },
+    {
+      "slot": 4,
+      "column": "Mid_AC20_AH30",
+      "position_id": 1,
+      "position": "middle",
+      "material_id": 4,
+      "material": "AC20_AH30"
+    },
+    {
+      "slot": 5,
+      "column": "Mid_AC20_SBS",
+      "position_id": 1,
+      "position": "middle",
+      "material_id": 5,
+      "material": "AC20_SBS"
+    },
+    {
+      "slot": 6,
+      "column": "Mid_AC20_AH50",
+      "position_id": 1,
+      "position": "middle",
+      "material_id": 6,
+      "material": "AC20_AH50"
+    },
+    {
+      "slot": 7,
+      "column": "Bot_AC25_AH30",
+      "position_id": 2,
+      "position": "bottom",
+      "material_id": 7,
+      "material": "AC25_AH30"
+    },
+    {
+      "slot": 8,
+      "column": "Bot_AC25_AH50",
+      "position_id": 2,
+      "position": "bottom",
+      "material_id": 8,
+      "material": "AC25_AH50"
+    },
+    {
+      "slot": 9,
+      "column": "Bot_AC25_AH70",
+      "position_id": 2,
+      "position": "bottom",
+      "material_id": 9,
+      "material": "AC25_AH70"
+    },
+    {
+      "slot": 10,
+      "column": "Bot_AC25_Re_AH70",
+      "position_id": 2,
+      "position": "bottom",
+      "material_id": 10,
+      "material": "AC25_Re_AH70"
+    },
+    {
+      "slot": 11,
+      "column": "Bot_AC10_SBS",
+      "position_id": 2,
+      "position": "bottom",
+      "material_id": 11,
+      "material": "AC10_SBS"
+    },
+    {
+      "slot": 12,
+      "column": "Base_CBG_A",
+      "position_id": 3,
+      "position": "base",
+      "material_id": 12,
+      "material": "CBG_A"
+    },
+    {
+      "slot": 13,
+      "column": "Base_CBG_B",
+      "position_id": 3,
+      "position": "base",
+      "material_id": 13,
+      "material": "CBG_B"
+    },
+    {
+      "slot": 14,
+      "column": "Base_CS",
+      "position_id": 3,
+      "position": "base",
+      "material_id": 14,
+      "material": "CS"
+    },
+    {
+      "slot": 15,
+      "column": "Base_CC",
+      "position_id": 3,
+      "position": "base",
+      "material_id": 15,
+      "material": "CC"
+    },
+    {
+      "slot": 16,
+      "column": "Base_LCC",
+      "position_id": 3,
+      "position": "base",
+      "material_id": 16,
+      "material": "LCC"
+    },
+    {
+      "slot": 17,
+      "column": "Base_GA",
+      "position_id": 3,
+      "position": "base",
+      "material_id": 17,
+      "material": "GA"
+    }
+  ]
+}

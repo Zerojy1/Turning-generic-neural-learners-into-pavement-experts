@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "time": "2026-11-01T23:29:40+08:00",
+  "reviewer": "assistant actual image inspection and table review",
+  "images": {
+    "01_three_level_comparison.png": "511bb0aeaa982c5c1c016825b2b9712018677588ed3e8e9fdb184218439b9822",
+    "02_calendar_rollout.png": "941dc66aed241fd8be7fd7769ce07be75f9077902e9e5ba3b71f2bf303c30f8b"
+  },
+  "checked": [
+    "labels and unoccluded content",
+    "12 bar values match CSV",
+    "four rollout panels show recorded scope",
+    "distinct panel y ranges disclosed",
+    "direct baseline weaker than persistence disclosed",
+    "missing observation disadvantage disclosed",
+    "tree better in calendar four-step disclosed",
+    "worst-structure undercoverage disclosed",
+    "original P1 passed and P2 failed retained",
+    "exploratory and no external validation retained"
+  ],
+  "freeze_check_passed": true
+}

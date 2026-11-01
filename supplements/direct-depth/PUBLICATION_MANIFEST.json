@@ -1,0 +1,298 @@
+{
+  "created_at": "2026-11-01T15:33:15.518144+00:00",
+  "base_commit": "e1096c81bb25d08867856a1b1041dbc1d4ade3e2",
+  "release": "v1.1.0",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6354,
+      "sha256": "767a644240be943a02baa131b0b0f8dad286a27db17b6f089ac92b3e1a72589d"
+    },
+    {
+      "path": "supplements/direct-depth/analysis.py",
+      "bytes": 7537,
+      "sha256": "c4ed7a561d562c14accc31d2d5b19cc00499c0bfd0d464f28f4f7ad8f8a37e14"
+    },
+    {
+      "path": "supplements/direct-depth/analysis_freeze.json",
+      "bytes": 4372,
+      "sha256": "0475afa426c5995def2aab7f1c8a6e90549f232054b91467889af6620337bba7"
+    },
+    {
+      "path": "supplements/direct-depth/calendar_temperature.py",
+      "bytes": 5273,
+      "sha256": "98cb03adb4af98a6672624f1de978d879e813de074db60e910d6fa2565657211"
+    },
+    {
+      "path": "supplements/direct-depth/checks/delivery_documentation_version.json",
+      "bytes": 203,
+      "sha256": "f033e232bc5dbcb1acc6d1b8650104199d4f463b702a50fa89e303a6fad1cf4c"
+    },
+    {
+      "path": "supplements/direct-depth/checks/documentation_change_log.json",
+      "bytes": 516,
+      "sha256": "95ebab13a509bba52aa9a582e11ffc8a52cc755e3efb96341758e757f7e85ad8"
+    },
+    {
+      "path": "supplements/direct-depth/checks/independent_supplement_verification.json",
+      "bytes": 13624,
+      "sha256": "037d5d20ed326d1bd91ca3b2e5112f0e3a1f1e05af3dc654f0a4c25dd1074c15"
+    },
+    {
+      "path": "supplements/direct-depth/checks/unit_checks.json",
+      "bytes": 926,
+      "sha256": "a6aeebc216af8c0b67c9e055fb458acbb332efda790fd6d7716290bf21bc9348"
+    },
+    {
+      "path": "supplements/direct-depth/checks/visual_scientific_review.json",
+      "bytes": 864,
+      "sha256": "94d690e6e33a5db207ea29de01df168b3772c3c5458cbe0d7b9e08fa3465199c"
+    },
+    {
+      "path": "supplements/direct-depth/common.py",
+      "bytes": 3099,
+      "sha256": "6fac9a8271813c242b8c56b7b72131bdeb41b89c225da4f27d5965e4583d71c9"
+    },
+    {
+      "path": "supplements/direct-depth/data.py",
+      "bytes": 5296,
+      "sha256": "24807e12020d1e5f5257ceb53dbf9052d3df79a110593cf2714f6905390aed63"
+    },
+    {
+      "path": "supplements/direct-depth/delivery_environment.json",
+      "bytes": 237,
+      "sha256": "043bd9796c54592a66b608ddd9535d9cb6e5cd1682aca93e0f367730a69ed8ae"
+    },
+    {
+      "path": "supplements/direct-depth/DESIGN.md",
+      "bytes": 3655,
+      "sha256": "7c85bc3f10bd28a5fd9824e1e084ba106ba61a021c98efc21f2cf3a4575e8214"
+    },
+    {
+      "path": "supplements/direct-depth/evaluation.py",
+      "bytes": 6421,
+      "sha256": "3bdff948c46572c57d271446969402bdb3967859eccf07b343b14027b8fa28a5"
+    },
+    {
+      "path": "supplements/direct-depth/figures/01_three_level_comparison.pdf",
+      "bytes": 36894,
+      "sha256": "0a13f14911d0965c5b6cb3982d39c6d53f7302a0c13b801cc9d3b628a71738fe"
+    },
+    {
+      "path": "supplements/direct-depth/figures/01_three_level_comparison.png",
+      "bytes": 69381,
+      "sha256": "511bb0aeaa982c5c1c016825b2b9712018677588ed3e8e9fdb184218439b9822"
+    },
+    {
+      "path": "supplements/direct-depth/figures/02_calendar_rollout.pdf",
+      "bytes": 42238,
+      "sha256": "e08e0feb4ce6d4164a3a81af35d3946c1513462e96cb4f8e5ccc448856b7c3d0"
+    },
+    {
+      "path": "supplements/direct-depth/figures/02_calendar_rollout.png",
+      "bytes": 178865,
+      "sha256": "941dc66aed241fd8be7fd7769ce07be75f9077902e9e5ba3b71f2bf303c30f8b"
+    },
+    {
+      "path": "supplements/direct-depth/freeze_supplement.py",
+      "bytes": 1921,
+      "sha256": "800da2c66b988399f365ac1097ad1e1efb04d269ab14c1af3375740d6a63936a"
+    },
+    {
+      "path": "supplements/direct-depth/models.py",
+      "bytes": 8240,
+      "sha256": "774c42b0ed9ab59ca3a8226ad7cb007d801d1baa587b1de60bea1d4ffb08403c"
+    },
+    {
+      "path": "supplements/direct-depth/package_supplement.py",
+      "bytes": 2174,
+      "sha256": "24dbef8459aa482224205c40c84d26781c4243be0e632844d2db546725e9e24d"
+    },
+    {
+      "path": "supplements/direct-depth/post_review_v1.py",
+      "bytes": 12122,
+      "sha256": "5800e1d8a3292485b9ee6e457dc85853409091413c93cff3b568a3d4d1f60b9d"
+    },
+    {
+      "path": "supplements/direct-depth/preflight_supplement.py",
+      "bytes": 3399,
+      "sha256": "c98f2de40301e6bda86ebbb20d29f9fabb5958b374390f5412c9a6246b9c2e11"
+    },
+    {
+      "path": "supplements/direct-depth/protocol.json",
+      "bytes": 15388,
+      "sha256": "00c18c18cec3391000340b3bf3f7b5303a15caf06cc188c0e9f83462edf45101"
+    },
+    {
+      "path": "supplements/direct-depth/queue_train.py",
+      "bytes": 2466,
+      "sha256": "b598f32d09066d8749a9cbb4ca5cf40af15767053156d65096724c03b4b6076b"
+    },
+    {
+      "path": "supplements/direct-depth/README.md",
+      "bytes": 2541,
+      "sha256": "f8861a247dc65e06a48670738b37cb4498008a31ff120e039a4cc70a6bf0bf8e"
+    },
+    {
+      "path": "supplements/direct-depth/report_supplement.py",
+      "bytes": 8174,
+      "sha256": "a7a90bfc353649df5a7945a63c2c6bfcb4db7ce1704db41610c6024bc8c90f08"
+    },
+    {
+      "path": "supplements/direct-depth/REPORT_ZH.md",
+      "bytes": 14149,
+      "sha256": "06fb4df5992ca9b1d79e99354d8afd92cd715497715fa97532f22d12b657d971"
+    },
+    {
+      "path": "supplements/direct-depth/reproduction_manifest.json",
+      "bytes": 490826,
+      "sha256": "45e7d0ab041493a945e4325ae90d3119a5908bb2c8fdc8f09b0f27e656d710fd"
+    },
+    {
+      "path": "supplements/direct-depth/REPRODUCTION_SUPPLEMENT.md",
+      "bytes": 2394,
+      "sha256": "4dac2bd8fea49e96e990ad10a01538e4300ebefec85ab85af4cbf676178c54e4"
+    },
+    {
+      "path": "supplements/direct-depth/RESULT_INDEX.md",
+      "bytes": 986,
+      "sha256": "8eaaf20542274966d8f12b96a7f9563fe969ebf23ad4b982dffff0d3f89952ac"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/interval_structures.csv",
+      "bytes": 1528662,
+      "sha256": "c39cec8661e047e1d5ebb20c441a3fec3bfb943f8c667483a5b7ae2808cedd80"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/interval_summary.csv",
+      "bytes": 122486,
+      "sha256": "e23c7b090eec375c170d4f356a762e823c9397af3fe2e7e78bb1aad45c09bddb"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/late_load_structures.csv",
+      "bytes": 23659,
+      "sha256": "225033834f38d4242cf044504fd9634a9e296034c6cb1a44b168439e0b6b37e0"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/late_load_summary.csv",
+      "bytes": 1647,
+      "sha256": "11b4725d22e4d618cbd86bc7084ebcf4e633ee32806d89826c68658f5f0b5950"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/new_calibration_radii.csv",
+      "bytes": 23026,
+      "sha256": "5b4c665166cf8be40d65c6c3c32f58c7765f2d1c7c8994d4d67d9d8a34883baf"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/new_compute_summary.csv",
+      "bytes": 341,
+      "sha256": "c39f5e539209c681c7b42621af6c2d1d40ec18f4fe610372681c5c79cd868605"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/one_step_summary.csv",
+      "bytes": 3500,
+      "sha256": "3969d53b8a350271e3124e2dd7b3bd8195fc7254bdfa1ad23fe78316f1f95dd6"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/paired_contrasts.csv",
+      "bytes": 4877,
+      "sha256": "bfa5b090f315f9e7ea7e0b0740948fe90a2172893b42920c6b3e4da694709876"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/scenario_contrasts.csv",
+      "bytes": 136760,
+      "sha256": "f9cc05a05d55ded87608b319fba7b4beb4108e1d76cdc0b6cfc6a75c7b83cda6"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/scenario_structure_metrics.csv",
+      "bytes": 1960842,
+      "sha256": "e3474a3bad1930d8489b4b60c22a412c2fd79f32a01b1baa3fe26cded1d03cab"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/scenario_summary.csv",
+      "bytes": 130408,
+      "sha256": "51480fb0216ce5e924334b58fca8b5daa0b6e80952a8a05017906771ea251dac"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/structure_metrics.csv",
+      "bytes": 51132,
+      "sha256": "ec554f225d9b0b53c36227abd3da5408ce59de44d586ca295795a3d2f2231ccf"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/supplementary_primary_contrasts.csv",
+      "bytes": 1089,
+      "sha256": "13dd0f1bcb707ec5d6506c3a36039301c96099f3cb68a9e3dfcf721fc19dff95"
+    },
+    {
+      "path": "supplements/direct-depth/results/tables/three_level_main_table.csv",
+      "bytes": 820,
+      "sha256": "1a82bf7af4e469067ab171bbff8a9b38eae9c57f91ac212dc3181675df164aff"
+    },
+    {
+      "path": "supplements/direct-depth/run_job.py",
+      "bytes": 4874,
+      "sha256": "2413de076a9943eaa6b3f5284f27efcf7d02af18a8a9c057976946259611d87b"
+    },
+    {
+      "path": "supplements/direct-depth/run_matrix.csv",
+      "bytes": 8433,
+      "sha256": "d9a7d91d0deefcfaaa78238874623e6bf60fe3a6d9acc9b48e07a055eff01004"
+    },
+    {
+      "path": "supplements/direct-depth/scenario_predict.py",
+      "bytes": 3771,
+      "sha256": "7f90e809ecda448bbee9a14a672c7cc282531e2f39b1cf1068876795522cfb77"
+    },
+    {
+      "path": "supplements/direct-depth/scenarios.py",
+      "bytes": 4383,
+      "sha256": "c3a10aedbfa885f4feea66d0586fe039d854ef406a96de2e45ba7e57bb91e8e0"
+    },
+    {
+      "path": "supplements/direct-depth/setup_remote.py",
+      "bytes": 2283,
+      "sha256": "193a78b7d870e39c1d43f4a6bd1e72b2fc66e0b7b9725b4d6c8389b5a805928f"
+    },
+    {
+      "path": "supplements/direct-depth/slot_mapping.json",
+      "bytes": 3252,
+      "sha256": "ab635639cbb456966f2345546de2691ddb87d956ac0fe30270a0218c46c99005"
+    },
+    {
+      "path": "supplements/direct-depth/supplement_analysis.py",
+      "bytes": 3746,
+      "sha256": "64709f94a60f88891d0bae49065a135cd6e61fc91bef9bd84e059e4bf5ea0625"
+    },
+    {
+      "path": "supplements/direct-depth/supplement_evaluation.py",
+      "bytes": 3989,
+      "sha256": "55fa59ebe079976579fd4b64da8a72b1d42877e89c42006f3536093c900cbca2"
+    },
+    {
+      "path": "supplements/direct-depth/supplement_pipeline.py",
+      "bytes": 1340,
+      "sha256": "9b023604bd38fd08764ddf4c0235420f737b0c730bb374258000812dd336ed67"
+    },
+    {
+      "path": "supplements/direct-depth/target_manifest.csv",
+      "bytes": 222159,
+      "sha256": "750f0562e2ec37b67607c3db829a3a7bb51d0d666babec8d5b591a661ed3602e"
+    },
+    {
+      "path": "supplements/direct-depth/training_freeze.json",
+      "bytes": 4372,
+      "sha256": "0475afa426c5995def2aab7f1c8a6e90549f232054b91467889af6620337bba7"
+    },
+    {
+      "path": "supplements/direct-depth/verify_supplement.py",
+      "bytes": 5475,
+      "sha256": "fcc875cb01d443a19a58915e75583e2a6aa813bba998b7778e100abd9421daeb"
+    },
+    {
+      "path": "supplements/direct-depth/Windows_verification.json",
+      "bytes": 588,
+      "sha256": "5712522508469229e78e803279d2188646ec05d977789d3f8ebce4534799731d"
+    }
+  ],
+  "note": "Additive supplement; original v1.0.0 artifacts unchanged. Git mirror omits large model/data artifacts available in the full ZIP."
+}

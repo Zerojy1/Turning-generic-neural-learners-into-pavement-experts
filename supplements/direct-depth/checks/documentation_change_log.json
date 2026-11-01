@@ -1,0 +1,10 @@
+{
+  "version": "post_review_v1",
+  "time": "2026-11-01T23:29:40+08:00",
+  "script_sha256": "5800e1d8a3292485b9ee6e457dc85853409091413c93cff3b568a3d4d1f60b9d",
+  "training_freeze_unchanged": true,
+  "numerical_analysis_unchanged": true,
+  "figures_unchanged": true,
+  "preserved_auto_report": "checks/report_before_scientific_review.md",
+  "changes": "Added table-grounded Chinese scientific interpretation, adverse results, figure reading notes and reproduction instructions. No fits or numerical results changed."
+}
