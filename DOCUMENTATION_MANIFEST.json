@@ -1,0 +1,54 @@
+{
+  "scope": "Current reader-facing documentation; numerical source/data/tables/figures and release assets unchanged",
+  "base_commit": "44017a057212a9fa322e301a0ffa4528d3a78d74",
+  "files": [
+    {
+      "path": "PROTOCOL.md",
+      "bytes": 5700,
+      "sha256": "171bab1c9d750e05310b81f6e5a1ef6478b8a09cad045f814bff27dc6b03f53e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5091,
+      "sha256": "47713c6673dc3cd5a34625b9570f2743d6253a716b67bfb5751e9e8bfd32edb5"
+    },
+    {
+      "path": "REPRODUCTION.md",
+      "bytes": 3441,
+      "sha256": "b8dcaca95e922306c6375ec1bbee1609e0206b3018ec3db1648c2c17ea7759e2"
+    },
+    {
+      "path": "RESULTS.md",
+      "bytes": 6505,
+      "sha256": "dfc9565649638a74ac075cc5b21c88c1c99d1831a3beb6576b267b1b6cad4338"
+    },
+    {
+      "path": "supplements/direct-depth/README.md",
+      "bytes": 2420,
+      "sha256": "3949f15d88ae91bb8790dfb88e4a8a2147ad32348b397addcd2fd5684477f039"
+    },
+    {
+      "path": "supplements/direct-depth/REPORT_ZH.md",
+      "bytes": 12827,
+      "sha256": "8f8161d50cf413d4f51e950ec9c2080ab4b6040a05f5be30ad5d31d860eb4b9b"
+    },
+    {
+      "path": "supplements/direct-depth/REPRODUCTION_SUPPLEMENT.md",
+      "bytes": 837,
+      "sha256": "011ca9f14a86c099e4a1522a9d8c8429259a721376e289d3b05d687b09edd1df"
+    },
+    {
+      "path": "supplements/direct-depth/RESULT_INDEX.md",
+      "bytes": 1241,
+      "sha256": "62938c445e01b82907aa6d04d02cd07c6c85254e861056a44cccb3c1fae33462"
+    }
+  ],
+  "removed_from_current_source_mirror": [
+    "supplements/direct-depth/DESIGN.md",
+    "supplements/direct-depth/checks/delivery_documentation_version.json",
+    "supplements/direct-depth/checks/documentation_change_log.json",
+    "supplements/direct-depth/post_review_v1.py",
+    "supplements/direct-depth/setup_remote.py"
+  ],
+  "release_snapshots_unchanged": true
+}

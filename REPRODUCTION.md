@@ -1,43 +1,71 @@
-# Reproducing and verifying the current experiment
+# Reproduction and artifact verification
 
-## Download
-Download `eki-latest-experiment.zip` and `SHA256SUMS.txt` from the
-[release](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.0.0). Verify the ZIP hash before extraction.
-The ZIP contains the repository files plus the large artifacts omitted from Git.
+Use the versioned release packages as the executable snapshots. The main branch contains
+updated explanatory documentation; release manifests describe their own immutable
+snapshots, not every subsequent documentation edit on this branch.
 
-## Integrity check (standard Python only)
-After extraction, run:
+## 1. Download the relevant package
+
+| Evaluation | Required asset | Release |
+|---|---|---|
+| EKI, components, transfer and attribution | `eki-latest-experiment.zip` | [v1.0.0](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.0.0) |
+| Matched direct-depth and three-level comparison | `eki_direct_supplement_reproduction.zip` | [v1.1.0](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.1.0) |
+| Quick report/table/figure access | `eki_direct_supplement_results.zip` | [v1.1.0](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.1.0) |
+
+Download the matching `SHA256SUMS.txt` and verify the archive before extraction. The
+direct-depth package contains all 100 new final fits, their inner candidates, inputs,
+prediction records and calibration artifacts. Original EKI weights remain in v1.0.0.
+
+## 2. Check file integrity
+
+For the extracted v1.0.0 package:
+
 ```bash
 python verify_distribution.py --mode full
 ```
-For a Git checkout without release artifacts use `--mode git`. Every included file is
-size- and SHA-256-checked. The manifest distinguishes files stored in Git and the asset.
 
-## Numerical replay
-Use Linux with the library versions recorded in `environment.json` and CUDA for the
-original neural replay script. Run in a working copy so the released artifacts stay intact:
+For a source-only integrity check, use the exact v1.0.0 source snapshot and `--mode git`,
+rather than the evolving documentation branch. In v1.1.0, every file's SHA-256 and byte
+count is listed in `reproduction_manifest.json`. The supplied
+[Windows verification](supplements/direct-depth/Windows_verification.json) checks all 2,648 manifest members
+and archive CRCs; the archive also contains the manifest itself.
+
+## 3. Replay fitted models
+
+Use a writable copy and the recorded Linux/Python/CUDA environment. From the v1.0.0 extraction:
+
 ```bash
 python verify_results.py
 ```
-This reloads all 605 final models, checks split membership and internal model selection,
-recomputes main metrics and both primary tests, and verifies recursive state updates,
-temperature provenance, response checks and attribution additivity. Floating-point
-hardware differences may produce small variations. The original replay record is in
-`checks/independent_verification.json`.
 
-## Recompute summaries
-The complete asset supports `python analysis.py`, `python finish_analysis.py`, and
-`python plot_results.py` in a writable copy. Do not mix results from different snapshots.
+This independently reloads 605 models and checks metrics, selection, recursive updates,
+temperature provenance, shape responses and attribution additivity.
 
-## Fresh training
-Create a NEW working copy of the Git source with the supplied input data and required
-calendar records from the complete asset, but without `runs/`, `evaluation/`, `attribution/`,
-or queue completion records. Use `python train_pipeline.py` to fit the fixed matrix.
-Do not launch it in the delivered result directory. This publication task did not retrain models.
+From the v1.1.0 extraction:
 
-## Distribution provenance
-`release_provenance.json` records source and packaged hashes. Packaging changes affect
-documentation, non-computational metadata, local reference paths, and provenance guards.
-Prediction formulas, weights, training choices, numeric input arrays and output files are
-unchanged. `training_freeze.json` and `analysis_freeze.json` bind the distribution files;
-they are explicitly packaging-time snapshots, not a new prospective registration.
+```bash
+python verify_supplement.py
+```
+
+This reloads all 100 direct-depth models, recomputes primary metrics, bootstrap/Holm
+comparisons and 360 calibration groups, and checks that reused EKI/residual results are
+unchanged. Hardware differences may cause small floating-point differences.
+
+## 4. Recompute tables or refit
+
+The EKI snapshot supports `analysis.py`, `finish_analysis.py` and `plot_results.py`.
+The direct-depth snapshot supports `supplement_analysis.py` and
+`supplement_evaluation.py`; saved per-group inference records are included. Do not mix
+artifacts across snapshots or replace supplied results with selectively rerun estimates.
+
+Fresh training is optional: use a separate clean working copy with the exact frozen
+inputs and configurations, without previous model or queue completion records. Use
+`train_pipeline.py` for the EKI matrix or `queue_train.py main` for the direct-depth
+matrix. This is not needed to validate the released fitted predictions.
+
+## Provenance
+
+The release packages retain training/analysis manifests, source hashes, environments,
+split membership, learning curves and verification records. Current documentation
+reorganization changes no numerical inputs, weights, predictions, tests or release assets.
+See [Protocol](PROTOCOL.md) for evaluation scope and [Results](RESULTS.md) for all outcomes.

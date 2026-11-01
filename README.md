@@ -1,97 +1,81 @@
-# Turning generic neural learners into pavement experts: A backbone-agnostic engineering-knowledge interface for rutting prediction
+# Turning generic neural learners into pavement experts
+### A backbone-agnostic engineering-knowledge interface for rutting prediction
 
-**EKI** embeds observation referencing, layer–material semantics, and constrained
-load–temperature responses into MLP, GRU, LSTM, and Transformer learners. The same
-module implementation is reused across backbones; each model learns its own weights.
+**EKI embeds pavement knowledge into generic neural learners through reusable prediction modules.**
+Observation-referenced prediction, layer–material semantics, and constrained load–temperature
+responses are integrated with **MLP, GRU, LSTM, and Transformer** backbones. Module definitions
+and implementation are reused; each backbone is trained independently.
 
-## Matched direct-depth supplement (v1.1.0)
+[Method and evaluation](PROTOCOL.md) · [Results and evidence](RESULTS.md) · [Reproduce](REPRODUCTION.md) · [Download models and data](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases)
 
-The new supplement adds 100 direct-depth models (A0), matched to the ordinary residual
-models (A2) in architecture, available inputs, initialization rules and training budget.
-Each version is fitted independently. Existing A1/A2 and tree predictions are reused
-unchanged. RMSE below is in millimetres, with structure-balanced aggregation.
+## Whole-framework comparison
 
-| Backbone | Direct depth A0 | Ordinary residual A2 | Full EKI A1 | A1 vs A0 reduction | A1 vs A2 reduction |
-|---|---:|---:|---:|---:|---:|
-| MLP | 0.56436 | 0.31186 | 0.28504 | 49.49% | 8.60% |
-| GRU | 0.68053 | 0.33026 | 0.29049 | 57.31% | 12.04% |
-| LSTM | 0.68601 | 0.34299 | 0.29373 | 57.18% | 14.36% |
-| Transformer | 0.67366 | 0.30066 | 0.28854 | 57.17% | 4.03% |
+The principal presentation compares a generic direct-depth learner (**A0**) with its
+EKI implementation (**A1**). The observation-referenced residual learner (**A2**) is
+retained as a bridge to distinguish observation referencing from the additional EKI design.
+All three receive historical observation, exposure and structure information.
 
-The four new A1-versus-A0 comparisons meet the frozen Holm-adjusted criterion
-(adjusted p=0.03720–0.03960), with lower errors on 14/15 test structures for each backbone.
-These comparisons are exploratory additions on previously examined data. Direct-depth
-baselines are weaker than persistence under this budget; the percentage reductions are
-not a claim about the best possible direct predictors. A1-versus-A0 measures the whole
-formulation, not the separate benefit of every engineering component. The original
-4.03%–14.36% improvements remain A1-versus-A2 comparisons.
+**Structure-balanced RMSE (mm): 2,089 dated targets, 15 held-out structures, five-seed ensembles.**
 
-All 100 fitted models were independently replayed, primary statistics and 360 calibration
-groups recomputed, and reused scores checked unchanged. The complete ZIP also passed
-Windows CRC and SHA-256 checks for all 2,648 manifest members.
+| Backbone | Direct depth A0 | Observation residual A2 | Full EKI A1 | Reduction: A0 → A1 |
+|---|---:|---:|---:|---:|
+| MLP | 0.56436 | 0.31186 | **0.28504** | **49.49%** |
+| GRU | 0.68053 | 0.33026 | **0.29049** | **57.31%** |
+| LSTM | 0.68601 | 0.34299 | **0.29373** | **57.18%** |
+| Transformer | 0.67366 | 0.30066 | **0.28854** | **57.17%** |
 
-Limitations remain visible: EKI is less accurate than ordinary residual networks for
-one missing inspection; XGBoost is more accurate in four-step historical-calendar
-prediction; worst-structure interval coverage can be low. Original P1 passed and P2
-did not establish noninferiority. No independent external validation has been added.
+EKI reduces RMSE by **49.49%–57.31% relative to direct-depth prediction** in the tested
+configurations, and by **4.03%–14.36% relative to observation-residual prediction**.
+Each backbone improves on A0 in 14 of 15 held-out structures. Residual XGBoost and
+persistence score **0.28947 mm** and **0.41324 mm**, respectively.
 
-- [Supplement guide](supplements/direct-depth/README.md), [three-level main table](supplements/direct-depth/results/tables/three_level_main_table.csv), and [Chinese scientific report](supplements/direct-depth/REPORT_ZH.md).
-- [Complete supplement release](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.1.0): all new weights, data, predictions, learning curves, source and reproduction manifest.
-- [Original EKI release v1.0.0](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.0.0) is retained unchanged and supplies the original EKI weights.
+![Direct depth, observation residual and full EKI](supplements/direct-depth/figures/01_three_level_comparison.png)
 
-![Direct, residual and EKI comparison](supplements/direct-depth/figures/01_three_level_comparison.png)
+## What is embedded
 
-## Original EKI versus ordinary residual results
+| Module | Engineering role | Implementation |
+|---|---|---|
+| Observation reference and memory | Condition the next prediction on the measured pavement state | Latest depth, peak–latest discrepancy, and an explicit observation offset |
+| Layer–material semantics | Preserve the roles of material, layer position and thickness | Shared slot encoding with thickness-weighted layer aggregation |
+| Load–temperature response | Control how current exposure changes the prediction | Daily load accumulation through a nonnegative rate and monotone temperature modulation |
 
-| Backbone | Ordinary residual RMSE (mm) | EKI RMSE (mm) | RMSE reduction |
-|---|---:|---:|---:|
-| MLP | 0.31186 | 0.28504 | 8.60% |
-| GRU | 0.33026 | 0.29049 | 12.04% |
-| LSTM | 0.34299 | 0.29373 | 14.36% |
-| Transformer | 0.30066 | 0.28854 | 4.03% |
+The resulting prediction is
 
-These are structure-balanced results on 2,089 dated targets from 15 held-out structures.
-Five seeds are averaged in millimetres before evaluation. The residual XGBoost reference
-has RMSE 0.28947 mm and persistence 0.41324 mm on the same targets.
+$$\widehat y_t = y_{t-1} + b_\theta(c_t) + \sum_j \Delta N_j\,a_\theta(c_t)\,h_\theta(T_j).$$
 
-- Cross-backbone superiority over ordinary residual networks met P1 (Holm p=0.0339966).
-- All 125,340 fixed-context EKI response checks satisfied the specified monotonicity.
-- Semantic structure ablations support useful representation on the two tested backbones.
-- Historical calendar temperatures improve multi-step prediction relative to recent-temperature continuation.
+Current-interval load and temperature enter through the engineering response pathway.
+With context and duration fixed, the output is nondecreasing in these exposures.
+**All 125,340 audited EKI perturbations satisfied the specified response constraints.**
 
-The complete evaluation also measures trade-offs: P2 did not establish noninferiority
-to unconstrained counterparts on all four backbones (Holm p=0.273873); the independent
-benefit of current temperature modulation is uncertain; missing-inspection performance
-decreases; class-transfer and explanation-background results vary. See [Results](RESULTS.md).
-The title expresses domain specialization; it does not claim performance equal to human experts.
+## Evidence beyond one-step error
 
-## Files and downloads
+The evaluation includes multi-step prediction, historical-calendar temperature inputs,
+missing inspections, late-load subsets, class transfer, component ablations, empirical
+prediction intervals, attribution stability and computational cost. The EKI implementations
+contain approximately **17k–72k parameters**; measured cost is reported rather than inferred
+from parameter count alone.
 
-- [All experiment arms and scenarios](all_arms_and_scenarios.csv): 2,387 summary records.
-- [31 result tables](results/tables/) and [11 figures in PNG/PDF](figures/).
-- [Frozen numerical inputs](data/), [target manifest](target_manifest.csv),
-  [run matrix](run_matrix.csv), [protocol](protocol.json), and model source in this repository.
-- [Complete current-study package](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/download/v1.0.0/eki-latest-experiment.zip):
-  all 605 fitted models, inner candidates, learning curves, seed predictions, scenario
-  outputs, calibration data, attribution coalitions, and temperature source records.
-- [SHA-256 checksums](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/download/v1.0.0/SHA256SUMS.txt).
+- [Three-level comparison and all supplementary tables](supplements/direct-depth/results/tables/)
+- [Components, response audits, transfer, explanations and cost](results/tables/)
+- [All evaluation arms and scenarios](all_arms_and_scenarios.csv)
+- [Figures](figures/) and [three-level comparison figures](supplements/direct-depth/figures/)
 
-The large files are release assets rather than Git blobs. The original v1.0.0 `FILE_MANIFEST.json` identifies
-every distribution file, its checksum, and whether it is stored in Git or the complete asset.
-All current arms, seeds and evaluation subsets are included.
+## Scope of the evidence
 
-## Reproduction
+This is a single-site exploratory evaluation; external validation remains open. Direct
+baselines are weaker than persistence under the fixed budget, so percentage improvements
+describe these matched configurations. Benefits vary by scenario: EKI is weaker than A2
+for one missing inspection, and noninferiority to unconstrained counterparts was not
+established across all four backbones. See [Results](RESULTS.md) for all comparisons and
+[Protocol](PROTOCOL.md#study-status-and-inferential-scope) for the study's inferential scope.
 
-See [REPRODUCTION.md](REPRODUCTION.md). The package includes byte-identical numerical
-artifacts and a documented packaging-only source adaptation ledger. No model was
-retrained and no result was selected or changed during publication packaging.
+## Models, data and verification
 
-## Evaluation scope
+| Distribution | Contents | Download |
+|---|---|---|
+| EKI evaluation | 605 fitted model configurations, inputs, all scenarios, components and attribution artifacts | [v1.0.0](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.0.0) |
+| Matched direct-depth evaluation | 100 additional direct-depth models, three-level comparisons, scenarios and intervals | [v1.1.0](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.1.0) |
 
-This is a single-site exploratory evaluation under structure-grouped validation.
-External independent validation is not available. Temperature/load monotonicity is
-conditional on fixed history and context; it is not causal identification or guaranteed
-trajectory monotonicity. Prediction intervals use empirical inner-data calibration.
-See [PROTOCOL.md](PROTOCOL.md) for assumptions, comparisons and validity boundaries.
-
-![Cross-backbone results](figures/fig01_main.png)
+The releases retain their verified snapshots, SHA-256 manifests and independent replay
+records. Run reproduction from the release extraction; this branch provides the current
+reader-facing documentation and a browsable source/results mirror.
