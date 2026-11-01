@@ -1,0 +1,21 @@
+STR_name,n,Pearson,Spearman,interpretation
+pooled,2639,-0.08918517450222989,-0.048091234738943826,duration-normalized descriptive correlation; no causal interpretation
+STR1,140,-0.07092699405741512,-0.03194258721209785,duration-normalized descriptive correlation; no causal interpretation
+STR10,139,-0.0904043049407302,-0.04725928258704328,duration-normalized descriptive correlation; no causal interpretation
+STR11,139,-0.10381251634971406,-0.09783255475039845,duration-normalized descriptive correlation; no causal interpretation
+STR12,139,-0.09457767179570623,-0.05739047612451996,duration-normalized descriptive correlation; no causal interpretation
+STR13,139,-0.046416768821828706,-0.025056396674565187,duration-normalized descriptive correlation; no causal interpretation
+STR14,138,-0.07894897560110835,-0.03440914088204628,duration-normalized descriptive correlation; no causal interpretation
+STR15,139,-0.07898228549824536,-0.03876684524235727,duration-normalized descriptive correlation; no causal interpretation
+STR16,140,-0.05873008536050918,-0.028715829715959332,duration-normalized descriptive correlation; no causal interpretation
+STR17,139,-0.07384966911493111,-0.03427106514075099,duration-normalized descriptive correlation; no causal interpretation
+STR18,139,-0.12842098632427107,-0.10497182203111942,duration-normalized descriptive correlation; no causal interpretation
+STR19,137,-0.049372545188440545,-0.007345741337408983,duration-normalized descriptive correlation; no causal interpretation
+STR2,140,-0.09783633136769326,-0.06577848775895008,duration-normalized descriptive correlation; no causal interpretation
+STR3,139,-0.0851330237815123,-0.0434928951891975,duration-normalized descriptive correlation; no causal interpretation
+STR4,134,-0.15322181759472672,-0.06067578436287619,duration-normalized descriptive correlation; no causal interpretation
+STR5,139,-0.1342239955819645,-0.05589107450410962,duration-normalized descriptive correlation; no causal interpretation
+STR6,140,-0.14427386095440953,-0.05547307891534073,duration-normalized descriptive correlation; no causal interpretation
+STR7,140,-0.06420126585979392,-0.03506469345915812,duration-normalized descriptive correlation; no causal interpretation
+STR8,140,-0.06791202667456475,-0.03801047743750566,duration-normalized descriptive correlation; no causal interpretation
+STR9,139,-0.07549758760479933,-0.04231181552035057,duration-normalized descriptive correlation; no causal interpretation

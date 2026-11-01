@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "time": "2026-11-01T09:57:43+08:00",
+  "structure_weighting": true,
+  "boundary_bootstrap_reference": true,
+  "Holm": true,
+  "empirical_radius_equal_structure": true,
+  "interval_score": true,
+  "selected_checkpoint_replay": [
+    {
+      "family": "mlp",
+      "n": 433
+    },
+    {
+      "family": "gru",
+      "n": 433
+    },
+    {
+      "family": "lstm",
+      "n": 433
+    },
+    {
+      "family": "transformer",
+      "n": 433
+    },
+    {
+      "family": "xgb",
+      "n": 433
+    }
+  ],
+  "outer_predictions_used": false
+}

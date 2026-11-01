@@ -1,0 +1,104 @@
+[
+  {
+    "name": "fig01_main",
+    "caption_zh": "2089目标，五种子先等权集成、结构均衡汇总。柱高是点估计；树与persistence为同目标参照。统计证据见图2及P1/P2表。",
+    "sources": [
+      "one_step_summary.csv"
+    ],
+    "PNG_SHA256": "22c3412c05a86fbd6060bb7b9acd95f52ff24176beabe4763f5a4750504630e1",
+    "PDF_SHA256": "f8b76ece798f1d91eac12d54d434cea1ed1ae6d9ce6092533c5dbba671096035"
+  },
+  {
+    "name": "fig02_primary_contrasts",
+    "caption_zh": "各骨干的配对技能差与未校正95%结构bootstrap区间。正式决策为四骨干合取后对P1/P2做Holm，不由图中区间单独判断。",
+    "sources": [
+      "primary_backbone_contrasts.csv",
+      "primary_conjunctions.csv"
+    ],
+    "PNG_SHA256": "d460c90b7b64655c3ec0ce20b392917a8376fa14f74e8e9d532933c0e69798b3",
+    "PDF_SHA256": "dd39f616f44b2f3e469216602340fbc7da136c78d8516f586a95b3d68fcab5ca"
+  },
+  {
+    "name": "fig03_rollout",
+    "caption_zh": "相同严格历史温度可用起点、相同给定荷载的1–4步递推。只替换温度，未来车辙均由集成预测更新。所有线均为描述性点估计，实际温度不是必然最好。",
+    "sources": [
+      "scenario_summary.csv"
+    ],
+    "PNG_SHA256": "5f27c1d243c8a4191092f12c8ccdc4a66895f35dae2aa39e5cc5955476913702",
+    "PDF_SHA256": "d27d4a483c61a52fc3f8a365a0eb114bfb3884df50a3436c4a71f13bbc407faf"
+  },
+  {
+    "name": "fig04_temperature_sensitivity",
+    "caption_zh": "EKI在共同起点的温度方案敏感性。LOYO可能使用起点后资料，明确为回顾性，不作为部署证据。",
+    "sources": [
+      "scenario_summary.csv"
+    ],
+    "PNG_SHA256": "06ee5db017ffee4267e96d5e600370c6fe0ed514ec8942a39be0d944ef3097eb",
+    "PDF_SHA256": "2a516882cae6664d112748544078a02b4deb8a4afcafaadb12e04bbebca89d27"
+  },
+  {
+    "name": "fig05_interval_tradeoff",
+    "caption_zh": "严格历史温度递推的经验区间覆盖、宽度与MIS95联合报告。半径只由选中内层checkpoint的结构均衡残差取得；复用选模集且最终refit不同，不保证95%覆盖。",
+    "sources": [
+      "interval_summary.csv"
+    ],
+    "PNG_SHA256": "b66606b274458182157da4b89a9fd714e8af088a4ff57be3d0db99c42eaaa0e8",
+    "PDF_SHA256": "398e92f2cc0b84406bbe4cbee626b853c5025d2d331729b6940acd2608e9f419"
+  },
+  {
+    "name": "fig06_shape_audit",
+    "caption_zh": "固定历史、结构和时长，对每目标每种子扰动。上排违规比例，下排响应幅度；0违规只证明实现了条件形状约束。完整原始负差及训练范围标记保留在response_rows。",
+    "sources": [
+      "response_audit.csv"
+    ],
+    "PNG_SHA256": "25ccf4d2564b4cb98e74843e8c425a4d223d25e759092c517a6ebeb9cbde19a7",
+    "PDF_SHA256": "54007b33754607fd07c01db3cae7c79e60c12a478bf1b9da6540329b6dc43530"
+  },
+  {
+    "name": "fig07_components",
+    "caption_zh": "固定MLP/GRU的温度调制与结构语义消融。区间为描述性，所有方向都保留。A6仍含历史温度，不能称去掉全部温度。",
+    "sources": [
+      "descriptive_components_tree.csv"
+    ],
+    "PNG_SHA256": "6b61c220de77e25073b68ace50ad2b2fafc71d0345391c13899b614c841557ed",
+    "PDF_SHA256": "2a834394e63595de60a16de65649becb9e57bcad150bb66147b09c748f5c251d"
+  },
+  {
+    "name": "fig08_class_transfer",
+    "caption_zh": "整类留出中的EKI语义结构减flat结构技能差；只覆盖材料可由训练集支持的I/IV/VI/VII类，每类结构数很少，区间仅作描述。树对照完整结果见表。",
+    "sources": [
+      "class_contrasts.csv"
+    ],
+    "PNG_SHA256": "3136a856cc108df3a553aa643b097b359e72b15de2177b361fbbe5b9ad24a389",
+    "PDF_SHA256": "6904857dd84d81a4306b1f7543fc3ee1737d9fbd6df128c819189d3e43ed7e9b"
+  },
+  {
+    "name": "fig09_load_data",
+    "caption_zh": "D1同时给出仅终点日期匹配与完整区间匹配；D2逐结构相关。共同日历、区间长短和加载安排均可能产生相关，不能用这些表证明荷载没有物理作用。",
+    "sources": [
+      "D1_load_synchrony.csv",
+      "D2_load_correlations.csv"
+    ],
+    "PNG_SHA256": "98d38c6a6fdfd6e48e731606cea8804c040adcec7893354e133db579bc9a2230",
+    "PDF_SHA256": "b1335262ad9e63671197fc25171218b032cbea7821d36f75656d08cc580424b8"
+  },
+  {
+    "name": "fig10_attribution",
+    "caption_zh": "对增量输出的四组精确Shapley归因，训练侧固定背景，每结构10个无标签预选查询，五种子先平均后取绝对值。归因大小不是消融收益或因果贡献。",
+    "sources": [
+      "attribution_global.csv"
+    ],
+    "PNG_SHA256": "81d9c6b7e8604c9813e5ed1272e0239fc9eefd3afb94bd1a84b34f2edab30562",
+    "PDF_SHA256": "9856835e1b4311ab8ce3635b4a12e9c8bf9f448e9881d0171080a32c318f60c0"
+  },
+  {
+    "name": "fig11_attribution_stability",
+    "caption_zh": "同时报告归因原始与归一化跨种子离散、背景变化；稳定不等于正确，幅度小可能导致原始离散较小。",
+    "sources": [
+      "attribution_seed_stability.csv",
+      "attribution_background_stability.csv"
+    ],
+    "PNG_SHA256": "938e5e8c8980f40176fc26bea3d40c9f5d3ef7bd4031002462574da2467c6ac2",
+    "PDF_SHA256": "1be7dc0dfe49852d16ee26a1af66aaa61b749ae62171d636ed0cf40e0592f8c4"
+  }
+]

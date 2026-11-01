@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "time": "2026-11-01T09:56:08+08:00",
+  "models": [
+    {
+      "family": "mlp",
+      "arm": "A1",
+      "nonbackbone_parameters": 5043
+    },
+    {
+      "family": "mlp",
+      "arm": "A2",
+      "nonbackbone_parameters": 5074
+    },
+    {
+      "family": "mlp",
+      "arm": "A3",
+      "nonbackbone_parameters": 5043
+    },
+    {
+      "family": "mlp",
+      "arm": "A6",
+      "nonbackbone_parameters": 5042
+    },
+    {
+      "family": "mlp",
+      "arm": "A7",
+      "nonbackbone_parameters": 5046
+    },
+    {
+      "family": "gru",
+      "arm": "A1",
+      "nonbackbone_parameters": 5043
+    },
+    {
+      "family": "gru",
+      "arm": "A2",
+      "nonbackbone_parameters": 5074
+    },
+    {
+      "family": "gru",
+      "arm": "A3",
+      "nonbackbone_parameters": 5043
+    },
+    {
+      "family": "gru",
+      "arm": "A6",
+      "nonbackbone_parameters": 5042
+    },
+    {
+      "family": "gru",
+      "arm": "A7",
+      "nonbackbone_parameters": 5046
+    },
+    {
+      "family": "lstm",
+      "arm": "A1",
+      "nonbackbone_parameters": 5043
+    },
+    {
+      "family": "lstm",
+      "arm": "A2",
+      "nonbackbone_parameters": 5074
+    },
+    {
+      "family": "lstm",
+      "arm": "A3",
+      "nonbackbone_parameters": 5043
+    },
+    {
+      "family": "lstm",
+      "arm": "A6",
+      "nonbackbone_parameters": 5042
+    },
+    {
+      "family": "lstm",
+      "arm": "A7",
+      "nonbackbone_parameters": 5046
+    },
+    {
+      "family": "transformer",
+      "arm": "A1",
+      "nonbackbone_parameters": 5043
+    },
+    {
+      "family": "transformer",
+      "arm": "A2",
+      "nonbackbone_parameters": 5074
+    },
+    {
+      "family": "transformer",
+      "arm": "A3",
+      "nonbackbone_parameters": 5043
+    },
+    {
+      "family": "transformer",
+      "arm": "A6",
+      "nonbackbone_parameters": 5042
+    },
+    {
+      "family": "transformer",
+      "arm": "A7",
+      "nonbackbone_parameters": 5046
+    }
+  ],
+  "split_jobs": 605,
+  "source_queries_checked": 158,
+  "same_load_across_temperature_scenarios": true,
+  "future_rutting_leakage_test": true,
+  "old_origin_and_explanation_manifests_identical": true,
+  "test_scope": "implementation and source checks, no outer model performance or training"
+}

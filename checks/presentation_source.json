@@ -1,0 +1,13 @@
+{
+  "time": "2026-11-01T10:04:05+08:00",
+  "commit": "9008ba727d9a9d5ae1f8f9eb6fd62e5d66590642",
+  "files": {
+    "plot_results.py": "65332590c2f9c040ea9a15b8c2e724e03a83a86a58a9e28fb4192ab1f70b76be",
+    "report_results.py": "ffa7e997a3025a35ff45e945e158780290f4716665a26bdc9877c71a13f0841d",
+    "delivery_pipeline.py": "9c5cce5a9dad601165bc89da055e0dc0b4fba4802c8e74d0c18ae33238a4dbde",
+    "package_results.py": "fb3b54e9c71a61dc1d77420c5cd3c86cf5ce54b4f60b5a1063b5538700026fb5",
+    "verify_package.py": "75d35076c92011721cacf2809ca7aff8fb9382e7400688eea3f4753f2b65da15"
+  },
+  "pid": 663758,
+  "role": "Presentation from frozen numerical tables; waits for independent verification, then requires real visual/scientific review before packaging."
+}

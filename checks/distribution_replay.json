@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "time": "2026-11-01T19:49:25+08:00",
+  "models_reloaded": 605,
+  "max_model_replay_error_mm": 4.76501464063972e-07,
+  "max_independent_metric_error": 2.220446049250313e-16,
+  "scenario_ensemble_updates_checked": true,
+  "same_given_loads_checked": true,
+  "strict_past_origins_per_arm": {
+    "components_A6_gru": 1624,
+    "components_A6_mlp": 1624,
+    "components_A7_gru": 1624,
+    "components_A7_mlp": 1624,
+    "main_A1_gru": 1624,
+    "main_A1_lstm": 1624,
+    "main_A1_mlp": 1624,
+    "main_A1_transformer": 1624,
+    "main_A2_gru": 1624,
+    "main_A2_lstm": 1624,
+    "main_A2_mlp": 1624,
+    "main_A2_transformer": 1624,
+    "main_A3_gru": 1624,
+    "main_A3_lstm": 1624,
+    "main_A3_mlp": 1624,
+    "main_A3_transformer": 1624,
+    "main_A4_xgb": 1624
+  },
+  "calendar_provenance_records_checked": 231896,
+  "attribution_additivity_checked": true,
+  "training_freeze": "1d6a2be699b333bec7365e7462f5a8a1d6b3c7268916e3655bd72202864eb4bc",
+  "analysis_freeze": "04746ec72f62dabbbd5bc181196e3529f9f0ad4bb98ea76eb34c3b46f7d5b9c1"
+}

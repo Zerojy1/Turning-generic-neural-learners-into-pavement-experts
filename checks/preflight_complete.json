@@ -1,0 +1,101 @@
+{
+  "passed": true,
+  "time": "2026-11-01T09:56:11+08:00",
+  "jobs": 605,
+  "tests": "e2e93d3ac67efad6f6636f7542985cf31c67c1782b14352c4d383d70133e09f1",
+  "post_tests": "8caa2036a783e7db6d5f38e21a0e7a918d26f9d356847c4cf8f29d7d314aabc1",
+  "class_material_coverage": [
+    "I",
+    "IV",
+    "VI",
+    "VII"
+  ],
+  "calendar": {
+    "time": "2026-11-01T09:55:11+08:00",
+    "primary_rollout_origins": 1954,
+    "strict_past_common_origins": 1624,
+    "retrospective_common_origins": 1954,
+    "strict_at_least2years_origins": 1104,
+    "source_outcomes_used": false,
+    "fallback": "archive support at interval end; strictly earlier than origin",
+    "by_structure": [
+      {
+        "STR_name": "STR1",
+        "past_eligible": 109,
+        "loyo_eligible": 131
+      },
+      {
+        "STR_name": "STR10",
+        "past_eligible": 108,
+        "loyo_eligible": 130
+      },
+      {
+        "STR_name": "STR11",
+        "past_eligible": 108,
+        "loyo_eligible": 130
+      },
+      {
+        "STR_name": "STR12",
+        "past_eligible": 108,
+        "loyo_eligible": 130
+      },
+      {
+        "STR_name": "STR13",
+        "past_eligible": 108,
+        "loyo_eligible": 130
+      },
+      {
+        "STR_name": "STR15",
+        "past_eligible": 108,
+        "loyo_eligible": 130
+      },
+      {
+        "STR_name": "STR16",
+        "past_eligible": 109,
+        "loyo_eligible": 131
+      },
+      {
+        "STR_name": "STR17",
+        "past_eligible": 108,
+        "loyo_eligible": 130
+      },
+      {
+        "STR_name": "STR18",
+        "past_eligible": 108,
+        "loyo_eligible": 130
+      },
+      {
+        "STR_name": "STR19",
+        "past_eligible": 106,
+        "loyo_eligible": 128
+      },
+      {
+        "STR_name": "STR2",
+        "past_eligible": 109,
+        "loyo_eligible": 131
+      },
+      {
+        "STR_name": "STR3",
+        "past_eligible": 108,
+        "loyo_eligible": 130
+      },
+      {
+        "STR_name": "STR6",
+        "past_eligible": 109,
+        "loyo_eligible": 131
+      },
+      {
+        "STR_name": "STR7",
+        "past_eligible": 109,
+        "loyo_eligible": 131
+      },
+      {
+        "STR_name": "STR8",
+        "past_eligible": 109,
+        "loyo_eligible": 131
+      }
+    ]
+  },
+  "benchmark": "training-side only",
+  "outer_predictions_inspected": false
+}

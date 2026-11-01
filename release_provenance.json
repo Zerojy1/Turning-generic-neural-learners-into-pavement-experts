@@ -1,0 +1,90 @@
+{
+  "source_archive_sha256": "82c11f386f8f786ba0f331d4c21d7670cb56f620f1b0efed3d5ccdcf6eaa4dce",
+  "original_training_analysis_commit": "86cdc18c6795280be3b65b85a807fae88d51f7e0",
+  "packaging_changes_only": true,
+  "retrained": false,
+  "numerical_artifacts_unchanged": true,
+  "original_training_provenance": {
+    "common.py": "03c379c1cee7abcd89583b113479b1481365cc95a4b174d15a2ef66b26f349c3",
+    "data.py": "24807e12020d1e5f5257ceb53dbf9052d3df79a110593cf2714f6905390aed63",
+    "models.py": "70b494fbb7633c7889c3f4e6846bbd0b83a156f0ea28a99e310c67e462c91da3",
+    "run_job.py": "655f2d9a83be11033e309cc225701e7b479f0fd532edb33e2b0ce108bdd1b63f",
+    "protocol.json": "a824a3fb4c7f00113713aae1b1a0eacfc063d24db62fa278e95acfaacefa2724",
+    "run_matrix.csv": "d2d67b1e0a853dd96c14480b7ff5eb6d88e68f8edeaa2cf3ae6bb9cb23f28100",
+    "slot_mapping.json": "ab635639cbb456966f2345546de2691ddb87d956ac0fe30270a0218c46c99005",
+    "target_manifest.csv": "750f0562e2ec37b67607c3db829a3a7bb51d0d666babec8d5b591a661ed3602e",
+    "data/arrays.npz": "d9f2402d6a055dca20db8b23d2ac836f8f896ae1a0a3caf1c8fc815a9913f1e3",
+    "data/panel.csv": "051797f0464ec0b2acd9ac06a506eec3d9a7dc04ab349f783ba089123caf11d1",
+    "data/daily.csv": "8583d2f8dac51b96e91b19d478f4421763368605e8289644a2afe39905b3bd65",
+    "data/targets.csv": "2ff9adacf2e8771123534f6463436218e42dcc56cb27629c3746da848f8a3de0",
+    "execution_addendum.md": "9f5d615e7cfbd91e0f1679fc79a4592ef569d526d6bc59d8e00607edefddcfbc",
+    "calendar_temperature.py": "98cb03adb4af98a6672624f1de978d879e813de074db60e910d6fa2565657211",
+    "data/archive_daily.csv": "1286df96e759a87c57e7d9de34eb1b879849332812a0899ba358c17dff3ecca8",
+    "checks/calendar_manifest.json": "2a846450c27919ff9f30da6ed8d4ea30aa766106c3fc5c15855147c0394b16ee"
+  },
+  "packaged_runtime_files": {
+    "common.py": "6fac9a8271813c242b8c56b7b72131bdeb41b89c225da4f27d5965e4583d71c9",
+    "data.py": "24807e12020d1e5f5257ceb53dbf9052d3df79a110593cf2714f6905390aed63",
+    "models.py": "70b494fbb7633c7889c3f4e6846bbd0b83a156f0ea28a99e310c67e462c91da3",
+    "run_job.py": "2413de076a9943eaa6b3f5284f27efcf7d02af18a8a9c057976946259611d87b",
+    "queue_train.py": "b598f32d09066d8749a9cbb4ca5cf40af15767053156d65096724c03b4b6076b",
+    "train_pipeline.py": "a5d7a09f717da76692a0bf18739bd47f8968cc72581905384039e763a1890ef0",
+    "analysis.py": "c4ed7a561d562c14accc31d2d5b19cc00499c0bfd0d464f28f4f7ad8f8a37e14",
+    "evaluation.py": "3bdff948c46572c57d271446969402bdb3967859eccf07b343b14027b8fa28a5",
+    "scenarios.py": "c3a10aedbfa885f4feea66d0586fe039d854ef406a96de2e45ba7e57bb91e8e0",
+    "scenario_predict.py": "7f90e809ecda448bbee9a14a672c7cc282531e2f39b1cf1068876795522cfb77",
+    "audit_responses.py": "be253795fc025f3fcd716b1c0750d8908e161ffb6efe7de611ffe62acf9603cc",
+    "attribution.py": "e6d78ec02b4b837a07855c04a0e1d3f2c6b42b3c07816fa9f1c7c0d448a87b13",
+    "data_checks.py": "86874e25f4cf20eaa486c54aa1a7a8b10ab20d299a7e32f285ce063e125ee601",
+    "finish_analysis.py": "4840cc81eefc38f6e8d09460a3a68ad2b78d6195ce0843fbfa054f801dbb937f",
+    "verify_results.py": "46a8ca6d620642ef538e07671efe099f371311819a6eb1ecae42126c011d828f",
+    "calendar_temperature.py": "98cb03adb4af98a6672624f1de978d879e813de074db60e910d6fa2565657211",
+    "plot_results.py": "026262bda4033cac574af5c58a507e32a131ffdee6d8bc0ccc04fb8642bad824",
+    "post_pipeline.py": "6a959fe11b6e20ccd5f8db5eb8ec015f52548710a6706d4e8d812d926578bbbb",
+    "post_tests.py": "959d73bd28309ea9f9a1a000862683ec77350a25278280e85be357bee3dca2b6",
+    "tests.py": "2aa3e8c5f5649a8fc5683a0d6efa70dd11bc90ca75147eb67277771d3ec1f6b8",
+    "protocol.json": "be8691bc8bf0499e172e0bcff25d6ba3510383c45b288bbfc2d5bcb316846764",
+    "execution_addendum.md": "8808745cf5ba4e30b9c74460f47298970dcb1197636bdabe7becee358b2c5441",
+    "data/source_manifest.json": "07131c8b0d35888294609404574796dea3316e2484aca6f4b10a2b9c928f6fa7",
+    "training_freeze.json": "1d6a2be699b333bec7365e7462f5a8a1d6b3c7268916e3655bd72202864eb4bc",
+    "analysis_freeze.json": "04746ec72f62dabbbd5bc181196e3529f9f0ad4bb98ea76eb34c3b46f7d5b9c1"
+  },
+  "edited_files": [
+    {
+      "file": "analysis.py",
+      "source_sha256": "5fbc2b43d7641d68ab5c36fa1200f936cd5cdb50f7a024831032dfda5d71e7a4",
+      "distribution_sha256": "c4ed7a561d562c14accc31d2d5b19cc00499c0bfd0d464f28f4f7ad8f8a37e14"
+    },
+    {
+      "file": "common.py",
+      "source_sha256": "03c379c1cee7abcd89583b113479b1481365cc95a4b174d15a2ef66b26f349c3",
+      "distribution_sha256": "6fac9a8271813c242b8c56b7b72131bdeb41b89c225da4f27d5965e4583d71c9"
+    },
+    {
+      "file": "data/source_manifest.json",
+      "source_sha256": "e9afc7a125fdb31fe1be62533d2d435437b2e0746057d69b2bbb37c0b1c2ebe2",
+      "distribution_sha256": "07131c8b0d35888294609404574796dea3316e2484aca6f4b10a2b9c928f6fa7"
+    },
+    {
+      "file": "environment.json",
+      "source_sha256": "07305cf0865c3c131f334c9fdfca7b00bbc57baf5eae53bab67e4bcbc2ca9880",
+      "distribution_sha256": "bdc14a587ee7a857f6ea3e8ab6b6cb7ca6f14ac049becab1cb13e1a5fb46b22f"
+    },
+    {
+      "file": "protocol.json",
+      "source_sha256": "a824a3fb4c7f00113713aae1b1a0eacfc063d24db62fa278e95acfaacefa2724",
+      "distribution_sha256": "be8691bc8bf0499e172e0bcff25d6ba3510383c45b288bbfc2d5bcb316846764"
+    },
+    {
+      "file": "run_job.py",
+      "source_sha256": "655f2d9a83be11033e309cc225701e7b479f0fd532edb33e2b0ce108bdd1b63f",
+      "distribution_sha256": "2413de076a9943eaa6b3f5284f27efcf7d02af18a8a9c057976946259611d87b"
+    },
+    {
+      "file": "tests.py",
+      "source_sha256": "c0ada768dab85c3115c4cae3050e96c3524e3aa058407c7b806e46e874925511",
+      "distribution_sha256": "2aa3e8c5f5649a8fc5683a0d6efa70dd11bc90ca75147eb67277771d3ec1f6b8"
+    }
+  ],
+  "changes": "Project documentation and metadata refreshed; provenance guards accept original records only after validating packaged runtime hashes; test reference paths made self-contained. Model formulas, weights, fitting logic, statistical calculations, numeric inputs and outputs are unchanged."
+}

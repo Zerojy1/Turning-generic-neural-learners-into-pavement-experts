@@ -1,0 +1,27 @@
+{
+  "kind": "publication_distribution_integrity_snapshot",
+  "original_training_analysis_commit": "86cdc18c6795280be3b65b85a807fae88d51f7e0",
+  "files": {
+    "common.py": "6fac9a8271813c242b8c56b7b72131bdeb41b89c225da4f27d5965e4583d71c9",
+    "data.py": "24807e12020d1e5f5257ceb53dbf9052d3df79a110593cf2714f6905390aed63",
+    "models.py": "70b494fbb7633c7889c3f4e6846bbd0b83a156f0ea28a99e310c67e462c91da3",
+    "run_job.py": "2413de076a9943eaa6b3f5284f27efcf7d02af18a8a9c057976946259611d87b",
+    "queue_train.py": "b598f32d09066d8749a9cbb4ca5cf40af15767053156d65096724c03b4b6076b",
+    "train_pipeline.py": "a5d7a09f717da76692a0bf18739bd47f8968cc72581905384039e763a1890ef0",
+    "protocol.json": "be8691bc8bf0499e172e0bcff25d6ba3510383c45b288bbfc2d5bcb316846764",
+    "run_matrix.csv": "d2d67b1e0a853dd96c14480b7ff5eb6d88e68f8edeaa2cf3ae6bb9cb23f28100",
+    "slot_mapping.json": "ab635639cbb456966f2345546de2691ddb87d956ac0fe30270a0218c46c99005",
+    "target_manifest.csv": "750f0562e2ec37b67607c3db829a3a7bb51d0d666babec8d5b591a661ed3602e",
+    "execution_addendum.md": "8808745cf5ba4e30b9c74460f47298970dcb1197636bdabe7becee358b2c5441",
+    "calendar_temperature.py": "98cb03adb4af98a6672624f1de978d879e813de074db60e910d6fa2565657211",
+    "data/arrays.npz": "d9f2402d6a055dca20db8b23d2ac836f8f896ae1a0a3caf1c8fc815a9913f1e3",
+    "data/panel.csv": "051797f0464ec0b2acd9ac06a506eec3d9a7dc04ab349f783ba089123caf11d1",
+    "data/daily.csv": "8583d2f8dac51b96e91b19d478f4421763368605e8289644a2afe39905b3bd65",
+    "data/targets.csv": "2ff9adacf2e8771123534f6463436218e42dcc56cb27629c3746da848f8a3de0",
+    "data/archive_daily.csv": "1286df96e759a87c57e7d9de34eb1b879849332812a0899ba358c17dff3ecca8",
+    "data/daily_target_audit.csv": "83f4828ba466f618dbf09e77a87065c3d4ef22f2731c7af33585b36502815010",
+    "data/source_manifest.json": "07131c8b0d35888294609404574796dea3316e2484aca6f4b10a2b9c928f6fa7",
+    "checks/calendar_manifest.json": "2a846450c27919ff9f30da6ed8d4ea30aa766106c3fc5c15855147c0394b16ee"
+  },
+  "note": "Packaging-time integrity guard; not a new pre-evaluation registration."
+}

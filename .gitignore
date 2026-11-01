@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+/.venv/
+/runs/
+/evaluation/
+/attribution/
+/results/*.csv.gz
+/checks/calendar_day_provenance.jsonl
+/queues/
+/logs/

@@ -1,0 +1,506 @@
+{
+  "name": "Turning generic neural learners into pavement experts: A backbone-agnostic engineering-knowledge interface for rutting prediction",
+  "short_name": "EKI",
+  "splits": {
+    "outer_groups": [
+      [
+        "STR1",
+        "STR8",
+        "STR19"
+      ],
+      [
+        "STR3",
+        "STR7",
+        "STR17"
+      ],
+      [
+        "STR6",
+        "STR11",
+        "STR13"
+      ],
+      [
+        "STR2",
+        "STR12",
+        "STR18"
+      ],
+      [
+        "STR10",
+        "STR15",
+        "STR16"
+      ]
+    ],
+    "anchors": [
+      "STR4",
+      "STR5",
+      "STR9",
+      "STR14"
+    ],
+    "inner_rule": "Next outer group cyclically is inner validation, disjoint from outer test; preprocessing and candidate fitting use inner training only; final refit uses all outer training with selected candidate and epoch/tree count.",
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "ensemble": "All5 seed predictions averaged in mm before evaluating, no seed selection."
+  },
+  "class_splits": {
+    "I": {
+      "heldout": [
+        "STR1",
+        "STR2",
+        "STR3"
+      ],
+      "final_train": [
+        "STR4",
+        "STR5",
+        "STR6",
+        "STR7",
+        "STR8",
+        "STR9",
+        "STR10",
+        "STR11",
+        "STR12",
+        "STR13",
+        "STR14",
+        "STR15",
+        "STR16",
+        "STR17",
+        "STR18",
+        "STR19"
+      ],
+      "inner_validation": [
+        "STR6",
+        "STR11",
+        "STR13"
+      ],
+      "inner_train": [
+        "STR4",
+        "STR5",
+        "STR7",
+        "STR8",
+        "STR9",
+        "STR10",
+        "STR12",
+        "STR14",
+        "STR15",
+        "STR16",
+        "STR17",
+        "STR18",
+        "STR19"
+      ],
+      "final_unseen_slots": [],
+      "inner_validation_unseen_slots": [],
+      "main_dated_targets": 419
+    },
+    "IV": {
+      "heldout": [
+        "STR10",
+        "STR12"
+      ],
+      "final_train": [
+        "STR1",
+        "STR2",
+        "STR3",
+        "STR4",
+        "STR5",
+        "STR6",
+        "STR7",
+        "STR8",
+        "STR9",
+        "STR11",
+        "STR13",
+        "STR14",
+        "STR15",
+        "STR16",
+        "STR17",
+        "STR18",
+        "STR19"
+      ],
+      "inner_validation": [
+        "STR1",
+        "STR8",
+        "STR19"
+      ],
+      "inner_train": [
+        "STR2",
+        "STR3",
+        "STR4",
+        "STR5",
+        "STR6",
+        "STR7",
+        "STR9",
+        "STR11",
+        "STR13",
+        "STR14",
+        "STR15",
+        "STR16",
+        "STR17",
+        "STR18"
+      ],
+      "final_unseen_slots": [],
+      "inner_validation_unseen_slots": [],
+      "main_dated_targets": 278
+    },
+    "VI": {
+      "heldout": [
+        "STR15",
+        "STR16",
+        "STR17"
+      ],
+      "final_train": [
+        "STR1",
+        "STR2",
+        "STR3",
+        "STR4",
+        "STR5",
+        "STR6",
+        "STR7",
+        "STR8",
+        "STR9",
+        "STR10",
+        "STR11",
+        "STR12",
+        "STR13",
+        "STR14",
+        "STR18",
+        "STR19"
+      ],
+      "inner_validation": [
+        "STR1",
+        "STR8",
+        "STR19"
+      ],
+      "inner_train": [
+        "STR2",
+        "STR3",
+        "STR4",
+        "STR5",
+        "STR6",
+        "STR7",
+        "STR9",
+        "STR10",
+        "STR11",
+        "STR12",
+        "STR13",
+        "STR14",
+        "STR18"
+      ],
+      "final_unseen_slots": [],
+      "inner_validation_unseen_slots": [],
+      "main_dated_targets": 418
+    },
+    "VII": {
+      "heldout": [
+        "STR18",
+        "STR19"
+      ],
+      "final_train": [
+        "STR1",
+        "STR2",
+        "STR3",
+        "STR4",
+        "STR5",
+        "STR6",
+        "STR7",
+        "STR8",
+        "STR9",
+        "STR10",
+        "STR11",
+        "STR12",
+        "STR13",
+        "STR14",
+        "STR15",
+        "STR16",
+        "STR17"
+      ],
+      "inner_validation": [
+        "STR3",
+        "STR7",
+        "STR17"
+      ],
+      "inner_train": [
+        "STR1",
+        "STR2",
+        "STR4",
+        "STR5",
+        "STR6",
+        "STR8",
+        "STR9",
+        "STR10",
+        "STR11",
+        "STR12",
+        "STR13",
+        "STR14",
+        "STR15",
+        "STR16"
+      ],
+      "final_unseen_slots": [],
+      "inner_validation_unseen_slots": [],
+      "main_dated_targets": 276
+    }
+  },
+  "families": [
+    "mlp",
+    "gru",
+    "lstm",
+    "transformer"
+  ],
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "training": {
+    "nn": {
+      "learning_rates": [
+        0.0005,
+        0.0015,
+        0.0045
+      ],
+      "epochs": 220,
+      "validate_every": 5,
+      "batch_size": 64,
+      "weight_decay": 0.0001,
+      "clip_norm": 1.0,
+      "dropout": 0.05,
+      "selection": "inner structure balanced MSE; no patience stop; tie by candidate order",
+      "target_scale": "training depth standard deviation; formulation-specific training target mean",
+      "scheduler": "cosine Tmax220 eta_min0.05*lr"
+    },
+    "xgb": {
+      "depths": [
+        2,
+        4,
+        6
+      ],
+      "rounds": 600,
+      "early_stopping_rounds": 50,
+      "eta": 0.035,
+      "subsample": 0.9,
+      "colsample_bytree": 0.9,
+      "lambda": 2,
+      "tree_method": "hist",
+      "nthread": 2
+    }
+  },
+  "data": {
+    "panel_sha256": "051797f0464ec0b2acd9ac06a506eec3d9a7dc04ab349f783ba089123caf11d1",
+    "primary_targets": 2089,
+    "sensitivity_targets": 2164,
+    "training_transition_targets": 2734,
+    "past_history_columns": [
+      "Cum_Load",
+      "Delta_Load",
+      "AvgT",
+      "DeltaT",
+      "MA3T"
+    ],
+    "past_history_length": 6,
+    "memory": [
+      "latest",
+      "peak_minus_latest"
+    ],
+    "current_information": [
+      "Delta_N",
+      "Q_temperature",
+      "known_interval_duration"
+    ],
+    "source_flags_predictor_inputs": false,
+    "temperature_depth_cm": 4,
+    "temperature_daily_min_coverage": 0.8,
+    "temperature_threshold_C": 25,
+    "sigma_T_floor_C": 1,
+    "daily_mean_heat_is_not_10minute_degree_hours": true,
+    "temperature_date_range": [
+      "2016-12-03",
+      "2021-12-28"
+    ]
+  },
+  "modules": {
+    "observational_reference": true,
+    "semantic_structure": "18 fixed joint layer-material slots; four position pools; 2288 parameters",
+    "context_dim": 83,
+    "context": "history64+memory2+semantic_structure16+known_duration1",
+    "context_excludes_current": [
+      "load",
+      "load_rate",
+      "temperature",
+      "coverage",
+      "fallback"
+    ],
+    "shared_head": [
+      83,
+      32,
+      2
+    ],
+    "a": "0.01*softplus(u_a), mm per10000 applications",
+    "h": "1+softplus(v)*relu(T-25)/sigma_T",
+    "h_reference_value": 1,
+    "temperature_coefficient": "one global scalar per fitted model",
+    "a_initial_effective": 0.01,
+    "gamma_initial_effective": 0.1,
+    "b_initial": "training mean increment; mm",
+    "A3": "same routing, use identity instead of softplus for a and gamma; effective initialization matched",
+    "A2_head": [
+      87,
+      57,
+      1
+    ],
+    "A1_nonbackbone_params_analytic": 5043,
+    "A2_nonbackbone_params_analytic": 5074,
+    "A7_flat": [
+      18,
+      65,
+      16
+    ]
+  },
+  "scenarios": {
+    "S1": "one_step_realized_exposure",
+    "S2": "rollout_known_load_realized_temperature",
+    "S3": "rollout_known_load_historical_calendar_temperature",
+    "S4": "rollout_known_load_recent_temperature",
+    "S5": "one_missing_rut_observation",
+    "S6": "retrospective_above75percent_total_load",
+    "S7": "separately_trained_class_holdouts"
+  },
+  "rollout": {
+    "horizons": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "load_rule": "identical given interval loads in S2 S3 S4; uniform within interval; retrospective actual loads explicitly conditional if no original plans",
+    "recent_temperature": "mean of last3 available interval means at origin, held constant",
+    "future_rut_allowed": false,
+    "state_update": "same five-seed ensemble mean for all seeds; peak=max(prior_peak,prediction)",
+    "future_environment_history": "scenario temperature only; never actual future T in S3/S4",
+    "common_origins": 1954,
+    "missing_targets": 2059
+  },
+  "calendar_temperature": {
+    "reference_years": "strictly before forecast-origin year",
+    "support_dates": "strictly before forecast origin",
+    "same_structure": true,
+    "calendar_window_days": 3,
+    "minimum_valid_days_per_year": 4,
+    "minimum_reference_years": 1,
+    "year_weighting": "equal after within-year averaging",
+    "leap_day": "average Feb28/Mar1 estimates, otherwise omit reference year",
+    "archive_fallback": "only timestamped origin-available source with causal construction provenance",
+    "no_reference": "unavailable; no future-year or recent-temperature substitution into S3",
+    "common_subset": "all4 future steps valid; freeze IDs before fitting; compare S2/S3/S4 on same IDs",
+    "standard30year_climate_normal_claim": false,
+    "retrospective_sensitivity": {
+      "name": "calendar_loyo_retrospective",
+      "years": "all available years except each future target-day year",
+      "origin_availability_required": false,
+      "deployment_claim": false,
+      "extra_training": false,
+      "comparisons": "matched common origin IDs; descriptive only"
+    }
+  },
+  "statistics": {
+    "primary_metric": "1-mean(structure_MSE_model)/mean(structure_MSE_persistence)",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261101,
+    "bootstrap_unit": "paired structure; fixed fitted predictions",
+    "primary_tests": {
+      "P1": {
+        "contrast": "A1-A2 skill S1",
+        "null_boundary": 0,
+        "family_combination": "maximum one-sided boundary-centered bootstrap reference p across4"
+      },
+      "P2": {
+        "contrast": "A1-A3 skill S1",
+        "null_boundary": -0.03,
+        "family_combination": "maximum one-sided boundary-centered bootstrap reference p across4",
+        "wording": "noninferiority within exploratory prespecified tolerance; not zero cost"
+      }
+    },
+    "multiplicity": "Holm over P1/P2",
+    "alpha_one_sided": 0.05,
+    "intervals": "paired percentile95 descriptive; not multiplicity-adjusted decision intervals",
+    "all_other_comparisons": "descriptive; no additional significance testing",
+    "independent_structures_claim": false
+  },
+  "intervals": {
+    "calibration": "selected inner model ensemble absolute errors by scenario/horizon; equal structure weights; .95 empirical quantile",
+    "selection_calibration_reuse_disclosed": true,
+    "outer_test_residuals_allowed": false,
+    "coverage_guarantee": false,
+    "no_valid_calendar_calibration": "mark that fold interval not estimable; report support, no fallback to test outcomes"
+  },
+  "audit": {
+    "load_multipliers": [
+      1.1,
+      1.5
+    ],
+    "temperature_shift_C": 5,
+    "targets": 2089,
+    "seeds": 5,
+    "models": [
+      "A1",
+      "A3"
+    ],
+    "tolerance_mm": "1e-6*max(1,abs(base_pred_mm))",
+    "also_record_all_raw_negative_differences": true,
+    "A1_required_violations": 0,
+    "scope": "fixed history context duration; one-step conditional output"
+  },
+  "explanation": {
+    "models": [
+      "A1",
+      "A2"
+    ],
+    "families": [
+      "mlp",
+      "gru",
+      "lstm",
+      "transformer"
+    ],
+    "queries_per_structure": 10,
+    "source_manifest": "checks/explanation_manifest.json",
+    "groups": [
+      "memory",
+      "load",
+      "temperature",
+      "structure"
+    ],
+    "coalitions": 16,
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46
+    ],
+    "background_sets": 2,
+    "stability": [
+      "raw",
+      "normalized"
+    ],
+    "causal_interpretation": false
+  },
+  "workload": {
+    "logical_jobs": 605,
+    "NN_jobs": 560,
+    "tree_jobs": 45,
+    "blocks": {
+      "main": 325,
+      "components": 100,
+      "transfer": 180
+    },
+    "training_configurations": 26,
+    "maximum_fit_calls": 2420,
+    "inference_scenarios_extra_fit_calls": 0,
+    "new_direct_prediction_matrix": false
+  },
+  "version": "eki-publication-1.0",
+  "status": "completed",
+  "evaluation_scope": "Single-site exploratory evaluation; external validation is not available."
+}
