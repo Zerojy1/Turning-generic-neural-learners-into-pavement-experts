@@ -69,3 +69,7 @@ The release packages retain training/analysis manifests, source hashes, environm
 split membership, learning curves and verification records. Current documentation
 reorganization changes no numerical inputs, weights, predictions, tests or release assets.
 See [Protocol](PROTOCOL.md) for evaluation scope and [Results](RESULTS.md) for all outcomes.
+
+## LTPP external evaluation
+
+Download [v1.2.0](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.2.0), extract the reviewer ZIP and run `python replay.py` in the extracted directory. The script checks SHA-256 digests, local model predictions, ensemble errors and shape counts. [Study and source index](supplements/ltpp/).

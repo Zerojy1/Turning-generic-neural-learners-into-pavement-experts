@@ -8,7 +8,13 @@ and implementation are reused; each backbone is trained independently.
 
 [Method and evaluation](PROTOCOL.md) · [Results and evidence](RESULTS.md) · [Reproduce](REPRODUCTION.md) · [Download models and data](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases)
 
-## Whole-framework comparison
+## Verification on independent LTPP road sections
+
+In seven held-out US states, locally fitted EKI reduced RMSE by **29.0%–39.1%** relative to matched direct-depth models on all four backbones. All four EKI ensembles outperformed persistence. Observation-residual controls retained a small RMSE advantage (0.0007–0.0166 mm). With history and duration fixed, EKI had **0/756** decreases under increased load or temperature, compared with **144/756 (19.0%)** for the observation-residual controls.
+
+[Study design, full metrics, shape audit and frozen-weight transfer](supplements/ltpp/) · [Download the LTPP replication package](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.2.0)
+
+## Whole-framework comparison on RIOHTrack
 
 The principal presentation compares a generic direct-depth learner (**A0**) with its
 EKI implementation (**A1**). The observation-referenced residual learner (**A2**) is
@@ -62,7 +68,7 @@ from parameter count alone.
 
 ## Scope of the evidence
 
-This is a single-site exploratory evaluation; external validation remains open. Direct
+The RIOHTrack evaluation is exploratory. The independent LTPP study uses a prespecified geographic holdout and reports the limits of direct transfer separately. On RIOHTrack, direct
 baselines are weaker than persistence under the fixed budget, so percentage improvements
 describe these matched configurations. Benefits vary by scenario: EKI is weaker than A2
 for one missing inspection, and noninferiority to unconstrained counterparts was not
@@ -74,6 +80,7 @@ established across all four backbones. See [Results](RESULTS.md) for all compari
 | Distribution | Contents | Download |
 |---|---|---|
 | EKI evaluation | 605 fitted model configurations, inputs, all scenarios, components and attribution artifacts | [v1.0.0](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.0.0) |
+| Local LTPP replication and audit | 65 locally fitted models, split membership, transfer predictions and shape-audit records | [v1.2.0](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.2.0) |
 | Matched direct-depth evaluation | 100 additional direct-depth models, three-level comparisons, scenarios and intervals | [v1.1.0](https://github.com/Zerojy1/Turning-generic-neural-learners-into-pavement-experts/releases/tag/v1.1.0) |
 
 The releases retain their verified snapshots, SHA-256 manifests and independent replay

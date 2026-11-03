@@ -96,3 +96,7 @@ or faster inference is not established.
 All numerical tables, seeds, scenarios and adverse comparisons are retained. See
 [Protocol](PROTOCOL.md#study-status-and-inferential-scope) for interpretation and
 [Reproduction](REPRODUCTION.md) for artifact verification.
+
+## Independent LTPP evaluation
+
+Locally fitted EKI improved on direct-depth models for all four backbones (29.0%–39.1% lower RMSE) and had zero decreases across 756 ensemble checks. Ordinary residual models had slightly lower point RMSE but decreased in 19.0% of checks. In a separate frozen-weight transfer test, all four EKI models had higher RMSE than persistence. [Numerical results, response magnitudes and transfer boundaries](supplements/ltpp/).

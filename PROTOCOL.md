@@ -86,14 +86,17 @@ horizon. Model selection and calibration share inner data, so coverage is not gu
 
 ## Study status and inferential scope
 
-This is a single-site exploratory evaluation. The direct-depth comparison was specified
+The original RIOHTrack evaluation is a single-site exploratory study. The direct-depth comparison was specified
 and frozen after the initial EKI results were available, but before its new direct-baseline
 fits; it is not an independent confirmation of the original study. Numerical configurations
 and comparison rules were frozen for each experimental block. The presentation emphasizes
 the complete framework, while the original tests and the supplementary statistical family
 retain their distinct roles.
 
-Shared loading/climate and overlapping training sets limit independence. External data
-validation and comparison with human experts have not been completed. The title refers
+Shared loading/climate and overlapping training sets limit independence. A separate LTPP evaluation uses independent road sections for locally fitted method replication and a distinct frozen-weight transfer assessment. No evaluation against human experts was performed. The title refers
 to domain specialization, not demonstrated equivalence to experts or replacement of
 inspection equipment. Formula-based consistency is separate from mechanism identification.
+
+## LTPP replication
+
+The locally fitted study uses 64 sections in 26 states. Training, validation and testing use disjoint states. The 12 sections in the frozen-weight study are excluded throughout local fitting and testing. All results are descriptive. [Cohort, source fields, training and perturbation definitions](supplements/ltpp/).

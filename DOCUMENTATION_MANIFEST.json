@@ -1,26 +1,26 @@
 {
-  "scope": "Current reader-facing documentation; numerical source/data/tables/figures and release assets unchanged",
-  "base_commit": "44017a057212a9fa322e301a0ffa4528d3a78d74",
+  "scope": "Current reader documentation for RIOHTrack and LTPP",
+  "base_commit": "ac984a7818cec0c22845ec49681a0382f93ccb58",
   "files": [
     {
       "path": "PROTOCOL.md",
-      "bytes": 5700,
-      "sha256": "171bab1c9d750e05310b81f6e5a1ef6478b8a09cad045f814bff27dc6b03f53e"
+      "bytes": 6277,
+      "sha256": "210769d742c7e1833029916eb3b7ffb183298c657419990d4b6f795528cacd57"
     },
     {
       "path": "README.md",
-      "bytes": 5091,
-      "sha256": "47713c6673dc3cd5a34625b9570f2743d6253a716b67bfb5751e9e8bfd32edb5"
+      "bytes": 6263,
+      "sha256": "ecfa9f1c3dccd1e75920c2fcd1e69b3147a3fd71dd0a8dc13b7769b0176a2324"
     },
     {
       "path": "REPRODUCTION.md",
-      "bytes": 3441,
-      "sha256": "b8dcaca95e922306c6375ec1bbee1609e0206b3018ec3db1648c2c17ea7759e2"
+      "bytes": 3886,
+      "sha256": "515becc499d39b4b92deb20a52c810daad80b7e08c6449e41eba92d4388be278"
     },
     {
       "path": "RESULTS.md",
-      "bytes": 6505,
-      "sha256": "dfc9565649638a74ac075cc5b21c88c1c99d1831a3beb6576b267b1b6cad4338"
+      "bytes": 7063,
+      "sha256": "7ff37352c63c9e3a36f2fab17db910878b5f21906e9a1d44e4167f805b0ed9b7"
     },
     {
       "path": "supplements/direct-depth/README.md",
@@ -29,8 +29,8 @@
     },
     {
       "path": "supplements/direct-depth/REPORT_ZH.md",
-      "bytes": 12827,
-      "sha256": "8f8161d50cf413d4f51e950ec9c2080ab4b6040a05f5be30ad5d31d860eb4b9b"
+      "bytes": 13065,
+      "sha256": "c60e27a34fdd5d55e87a3297aba26c11349e873e396446af0b60f6f14e5ea245"
     },
     {
       "path": "supplements/direct-depth/REPRODUCTION_SUPPLEMENT.md",
@@ -41,14 +41,11 @@
       "path": "supplements/direct-depth/RESULT_INDEX.md",
       "bytes": 1241,
       "sha256": "62938c445e01b82907aa6d04d02cd07c6c85254e861056a44cccb3c1fae33462"
+    },
+    {
+      "path": "supplements/ltpp/README.md",
+      "bytes": 5660,
+      "sha256": "d55f32da35e6e5a2f7d1609529de0aaec2a3fd0820fe6a5d1c35c3a8b2d55dc6"
     }
-  ],
-  "removed_from_current_source_mirror": [
-    "supplements/direct-depth/DESIGN.md",
-    "supplements/direct-depth/checks/delivery_documentation_version.json",
-    "supplements/direct-depth/checks/documentation_change_log.json",
-    "supplements/direct-depth/post_review_v1.py",
-    "supplements/direct-depth/setup_remote.py"
-  ],
-  "release_snapshots_unchanged": true
+  ]
 }
