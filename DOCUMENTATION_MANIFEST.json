@@ -1,6 +1,6 @@
 {
   "scope": "Current reader documentation for RIOHTrack and LTPP",
-  "base_commit": "ac984a7818cec0c22845ec49681a0382f93ccb58",
+  "base_commit": "89ab1e5889ac32128c0827c4df22d0e4503e9853",
   "files": [
     {
       "path": "PROTOCOL.md",
@@ -9,18 +9,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 6263,
-      "sha256": "ecfa9f1c3dccd1e75920c2fcd1e69b3147a3fd71dd0a8dc13b7769b0176a2324"
+      "bytes": 1553,
+      "sha256": "2bb01b561d4b368b3a07f8dee0dbef1f200551b51daf0be20685bb80e473f364"
     },
     {
       "path": "REPRODUCTION.md",
-      "bytes": 3886,
-      "sha256": "515becc499d39b4b92deb20a52c810daad80b7e08c6449e41eba92d4388be278"
+      "bytes": 1208,
+      "sha256": "aef13731dbdcd29233d9df8343a5932b3d82e8d023068cac1dd65e1fe8451acc"
     },
     {
       "path": "RESULTS.md",
-      "bytes": 7063,
-      "sha256": "7ff37352c63c9e3a36f2fab17db910878b5f21906e9a1d44e4167f805b0ed9b7"
+      "bytes": 6836,
+      "sha256": "748a8a6cea96e106fc5a70f81c06515f27b5561cb021b91d3cf3b6e38e94bc1c"
     },
     {
       "path": "supplements/direct-depth/README.md",
@@ -44,8 +44,8 @@
     },
     {
       "path": "supplements/ltpp/README.md",
-      "bytes": 5660,
-      "sha256": "d55f32da35e6e5a2f7d1609529de0aaec2a3fd0820fe6a5d1c35c3a8b2d55dc6"
+      "bytes": 2973,
+      "sha256": "a1e19d4684e6bb500c6540d66131f2a24ab63edab33e5d81e33cbe4c8b588faf"
     }
   ]
 }
