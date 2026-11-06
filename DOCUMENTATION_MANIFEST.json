@@ -1,31 +1,36 @@
 {
-  "scope": "Current reader documentation for RIOHTrack and LTPP",
-  "base_commit": "89ab1e5889ac32128c0827c4df22d0e4503e9853",
+  "scope": "Manuscript-aligned documentation and navigation; module numerical tables have their own SOURCE.json",
+  "base_commit": "6f0cd25eae9c39a0c2ea093e7df7a5d770af0c66",
   "files": [
     {
+      "path": "MANUSCRIPT_GUIDE.md",
+      "bytes": 3555,
+      "sha256": "dcc5691c408b8cefb540aba6be1b80a1da2909033aa141809a4d84f15ab1ea4a"
+    },
+    {
       "path": "PROTOCOL.md",
-      "bytes": 6277,
-      "sha256": "210769d742c7e1833029916eb3b7ffb183298c657419990d4b6f795528cacd57"
+      "bytes": 9964,
+      "sha256": "68e43c02a10e3444439b7e18c3f9bbc0042bb384c20cc3124a2ddffb504abcd4"
     },
     {
       "path": "README.md",
-      "bytes": 1553,
-      "sha256": "2bb01b561d4b368b3a07f8dee0dbef1f200551b51daf0be20685bb80e473f364"
+      "bytes": 3843,
+      "sha256": "1884f127223a065d75814a266dc34a7a662c307ee7c578367099fa311fd6b5c6"
     },
     {
       "path": "REPRODUCTION.md",
-      "bytes": 1208,
-      "sha256": "aef13731dbdcd29233d9df8343a5932b3d82e8d023068cac1dd65e1fe8451acc"
+      "bytes": 2970,
+      "sha256": "61a8f8c76d7053c39bdd0f3c14464d6c4033a9c71941bd332f81958337e5652e"
     },
     {
       "path": "RESULTS.md",
-      "bytes": 6836,
-      "sha256": "748a8a6cea96e106fc5a70f81c06515f27b5561cb021b91d3cf3b6e38e94bc1c"
+      "bytes": 8195,
+      "sha256": "8b656167bba0ac5b43f11e0f440ef135d7987dfc582ebb29494a59f21d86e170"
     },
     {
       "path": "supplements/direct-depth/README.md",
-      "bytes": 2420,
-      "sha256": "3949f15d88ae91bb8790dfb88e4a8a2147ad32348b397addcd2fd5684477f039"
+      "bytes": 2384,
+      "sha256": "aecf0449e3e338f67efccfbbed51a2cd020a88df63e632eac23aa7671d324926"
     },
     {
       "path": "supplements/direct-depth/REPORT_ZH.md",
@@ -44,8 +49,13 @@
     },
     {
       "path": "supplements/ltpp/README.md",
-      "bytes": 2973,
-      "sha256": "a1e19d4684e6bb500c6540d66131f2a24ab63edab33e5d81e33cbe4c8b588faf"
+      "bytes": 3066,
+      "sha256": "7d41af419cc1b4e0093efcf32d5a32d361f5fe292485c9fc06233cd6d446238d"
+    },
+    {
+      "path": "supplements/modules/README.md",
+      "bytes": 2530,
+      "sha256": "df43b08d6573e77c958e117caa02d667c3ff98c29057c5b463117205e35197a2"
     }
   ]
 }

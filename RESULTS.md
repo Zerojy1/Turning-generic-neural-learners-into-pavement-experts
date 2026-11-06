@@ -1,98 +1,68 @@
-# Results and engineering interpretation
+# Results
 
-## 1. Does the complete framework improve generic learners?
+## Forecast accuracy across neural backbones
 
-On the 2,089-target primary set, full EKI improves the direct-depth versions of all
-four tested backbones. Models use five-seed ensembles under structure-grouped validation.
-RMSE is the square root of the equally weighted mean of structure MSEs.
+EKI improves one-step accuracy across all four tested neural architectures. Metrics below give each of the 15 held-out RIOHTrack structures equal weight, using 2,089 dated targets and five-seed ensembles.
 
-| Backbone | Direct depth A0 | Observation residual A2 | Full EKI A1 | Reduction: A0 → A1 |
+| Backbone | Direct depth | Anchored | EKI | RMSE reduction versus direct depth |
 |---|---:|---:|---:|---:|
 | MLP | 0.56436 | 0.31186 | **0.28504** | **49.49%** |
 | GRU | 0.68053 | 0.33026 | **0.29049** | **57.31%** |
 | LSTM | 0.68601 | 0.34299 | **0.29373** | **57.18%** |
 | Transformer | 0.67366 | 0.30066 | **0.28854** | **57.17%** |
 
-The four A1-versus-A0 comparisons meet the frozen supplementary criterion, with
-Holm-adjusted reference p values of 0.03720–0.03960. Each backbone has lower error on
-14/15 structures. The 2,164-target sensitivity set preserves the ordering.
+RMSE is in millimeters. EKI has lower MSE than its matched direct-depth baseline on 14 of 15 structures for every backbone. Direct-depth contrasts have Holm-adjusted reference p values of 0.03720–0.03960. The 2,164-target sensitivity analysis preserves the ordering. [Main table](supplements/direct-depth/results/tables/three_level_main_table.csv) · [Paired differences and intervals](supplements/direct-depth/results/tables/supplementary_primary_contrasts.csv)
 
-Direct baselines receive the same available observation, exposure and structure information.
-They are weaker than persistence in this budget; these results establish gains for the
-tested configurations rather than the best attainable performance of all direct models.
-The complete comparison does not identify each module's separate causal contribution.
+Relative to anchoring alone, EKI reduces RMSE by 8.60%, 12.04%, 14.36% and 4.03% for MLP, GRU, LSTM and Transformer. P1 supports the joint four-backbone comparison (Holm-adjusted p = 0.034). Anchored XGBoost and monotonic anchored XGBoost achieve 0.28947 and 0.29032 mm, compared with persistence at 0.41324 mm. [Complete configuration metrics](supplements/modules/tables/summary.csv) · [P1 and P2](results/tables/primary_conjunctions.csv)
 
-[Main table](supplements/direct-depth/results/tables/three_level_main_table.csv) · [All one-step metrics](supplements/direct-depth/results/tables/one_step_summary.csv) · [Paired contrasts](supplements/direct-depth/results/tables/supplementary_primary_contrasts.csv)
+Depth agreement alone conceals differences in predicting the next change. Direct-depth neural models attain depth $R^2$ of 0.908–0.938 while their increment $R^2$ is negative. EKI reaches increment $R^2$ of 0.488–0.517, alongside depth $R^2$ of 0.983–0.984.
 
-## 2. What remains after observation referencing?
+## Complementary module contributions
 
-A2 already incorporates the observation-reference part of the framework. A1 reduces
-its RMSE by 8.60% (MLP), 12.04% (GRU), 14.36% (LSTM) and 4.03% (Transformer).
-This separates the complete-framework result from the added value of semantic structure
-and constrained response organization. The A0-to-A2 and A2-to-A1 differences are sequential
-comparisons, not an additive causal decomposition.
+The four-backbone ablations separate accuracy, conditional response direction and interval calibration.
 
-P1, the four-backbone superiority conjunction over A2, passes the original Holm procedure
-(adjusted p=0.0339966). P2, four-backbone noninferiority to unconstrained A3 at a −0.03
-skill margin, does not pass (adjusted p=0.273873). The direct-depth comparison is a separate
-supplementary family; it does not replace either original test.
+| Module or comparison | Finding |
+|---|---|
+| OA | Largest accuracy contribution; anchored versus direct-depth skill improves by 1.296–2.128 across backbones |
+| OA within EKI | Retaining the offset improves skill by 0.134–0.211 over No offset |
+| LME versus Flat | Positive skill estimates for all four backbones; the LSTM interval includes zero |
+| MLT versus Free path | Accuracy differences have intervals spanning zero; MLT eliminates decreasing exposure responses |
+| Temperature modulation | No heat contrasts span zero for every backbone |
+| Hard constraints versus Soft | EKI has zero violations; Soft retains 0.1–1.1%, with skill intervals spanning zero |
 
-Residual XGBoost has RMSE 0.28947 mm and persistence 0.41324 mm. EKI's point estimates
-are close to the tree's; similarity is not a statistical equivalence result.
+LME skill differences [descriptive 95% interval] are 0.030 [0.005, 0.065], 0.041 [0.007, 0.082], 0.038 [−0.044, 0.114] and 0.036 [0.001, 0.080] for MLP, GRU, LSTM and Transformer. The structural embedding visualization uses PCA fitted on fold-1 training structures with the MLP seed-42 model. [All contrasts](supplements/modules/tables/contrasts.csv) · [Structure metrics](supplements/modules/tables/by_structure.csv) · [Embedding coordinates](supplements/modules/tables/embedding.csv)
 
-[Original test results](results/tables/primary_conjunctions.csv) · [Per-backbone tests](results/tables/primary_backbone_contrasts.csv)
+The sign constraints have an architecture-dependent accuracy tradeoff. P2 does not establish non-inferiority to No signs jointly across the four backbones at the 0.03 skill margin (p = 0.274). These results distinguish the common response guarantee from the accuracy contribution of each component.
 
-## 3. Which engineering properties and components are supported?
+## Response consistency and interval calibration
 
-- **Conditional response consistency:** EKI has zero decreases in 125,340 fixed-context
-  load/temperature perturbation checks. A3's load violations range from 5.44% to 13.11%
-  and temperature violations from 2.72% to 5.62%; magnitudes are reported with frequencies.
-- **Structure representation:** semantic versus flat encoding has positive descriptive
-  skill contrasts for MLP (0.03015; 95% interval 0.00537–0.06471) and GRU (0.04102;
-  0.00709–0.08234), the two tested ablation backbones.
-- **Temperature modulation:** the corresponding component intervals include zero;
-  its independent predictive benefit is unresolved in this dataset.
+The architectural response guarantee is confirmed by **zero violations in 125,340 individual-fit checks**. Ensemble violation rates are 4.1–15.4% for direct-depth models, 8.3–21.1% for anchored models and 5.5–20.5% for Free path. Anchoring improves accuracy but increases decreasing responses in every RIOHTrack backbone; the constrained pathway supplies the missing response property.
 
-The signed context term and nonnegative response are learned model terms, not directly
-measured permanent/recoverable deformation states. The shape guarantee is conditional
-on fixed context, not causal identification or guaranteed temporal trajectory monotonicity.
+Monotonic anchored XGBoost also has zero violations, compared with 28.7% for the unconstrained anchored tree. Its RMSE changes from 0.28947 to 0.29032 mm. Both approaches provide consistent response direction, with different sensitivity to exposure. [Module and tree audits](supplements/modules/tables/summary.csv) · [Individual-fit EKI audit](results/tables/response_audit.csv)
 
-[Response audit](results/tables/response_audit.csv) · [Component contrasts](results/tables/descriptive_components_tree.csv)
+EKI mean one-step coverage is 95.0–95.3%, with MPIW 1.20–1.27 mm and MIS95 1.62–1.70 mm. Direct-depth models have coverage of 84.4–90.5%, widths of 2.01–2.30 mm and MIS95 of 3.25–4.18 mm. Anchored models already attain near-95% mean coverage. Worst-structure EKI coverage is 81.0–90.5% at one step and 54.6–78.7% at four steps. [Interval summaries](supplements/direct-depth/results/tables/interval_summary.csv) · [Per-structure coverage](supplements/direct-depth/results/tables/interval_structures.csv)
 
-## 4. How do the gains change under engineering scenarios?
+## Monitoring conditions
 
-| Scenario | Finding | Scope |
+| Condition | EKI result | Relevant comparison |
 |---|---|---|
-| Historical-calendar temperature, four steps | EKI RMSE 0.42393–0.44902 mm; A2 0.46758–0.54476 mm; A0 1.02984–1.25494 mm | 1,624 common targets, 15 structures |
-| Same four-step comparison with XGBoost | XGBoost RMSE 0.40363 mm is lower than all four EKI estimates | Same common target set |
-| One missing inspection | EKI RMSE 0.43399–0.43647 mm is higher than each corresponding A2; XGBoost is 0.39603 mm | 2,059 targets |
-| Late-load subset | EKI point estimates improve on A0, A2 and XGBoost | 494 targets; retrospective stratum |
-| Whole-class holdout | Transfer differences vary by class and backbone | Internal category transfer |
+| Four steps, prior-year calendar temperatures | RMSE 0.424–0.449 mm | Recent-temperature continuation 0.470–0.493 mm; persistence approximately 0.543 mm; anchored XGBoost approximately 0.404 mm |
+| One missing inspection | RMSE 0.434–0.437 mm | Anchored neural models 0.401–0.429 mm; anchored XGBoost approximately 0.396 mm |
+| Late loading | RMSE 0.199–0.210 mm | Anchored XGBoost approximately 0.216 mm |
+| Pavement-class holdout | LME benefit varies with class and backbone | The contribution of structural encoding depends on the configurations represented during fitting |
 
-Historical-calendar temperature improves EKI four-step results relative to recent-temperature
-continuation; A2 and XGBoost also benefit. All these temperature scenarios use identical
-supplied future loads. LOYO temperature is retrospective, and inference scenarios reuse
-the fitted models. They do not establish unknown-load forecasting performance.
-
-[Scenario tables](supplements/direct-depth/results/tables/scenario_summary.csv) · [Late-load results](supplements/direct-depth/results/tables/late_load_summary.csv) · [Class transfer](results/tables/class_summary.csv)
-
-## 5. Intervals, explanations and resources
-
-EKI one-step mean structure coverage is 94.96%–95.30%, with MPIW 1.201–1.273 mm.
-At four steps under historical-calendar temperature, mean coverage is 92.28%–94.56%,
-but worst-structure coverage is only 54.63%–78.70%. Coverage must be read with interval
-width, MIS95 and the per-structure distribution. Calibration and selection share inner
-data, so finite-sample coverage is not guaranteed. Missing-inspection MIS also favours A2
-over EKI for each backbone.
-
-Fixed-background attribution is more stable across seeds for all four EKI backbones;
-changing backgrounds does not yield a general improvement. These explanations describe
-model responses rather than causal physical effects. EKI has compact parameter counts,
-but measured inference overhead is positive relative to A2, so lower deployment cost
-or faster inference is not established.
-
-[Intervals](supplements/direct-depth/results/tables/interval_summary.csv) · [Per-structure coverage](supplements/direct-depth/results/tables/interval_structures.csv) · [Attribution stability](results/tables/attribution_background_stability.csv) · [Measured cost](results/tables/cost_summary.csv)
+The temperature scenarios use the same supplied future loads and 1,624 common prediction origins at each horizon. Missing-inspection evaluation uses 2,059 targets and late-loading evaluation 494. [Scenario tables](supplements/direct-depth/results/tables/scenario_summary.csv) · [Persistence](results/tables/scenario_persistence.csv) · [Late-loading tables](supplements/direct-depth/results/tables/late_load_summary.csv) · [Class-holdout tables](results/tables/class_summary.csv)
 
 ## Independent LTPP evaluation
 
-Locally fitted EKI improved on direct-depth models for all four backbones (29.0%–39.1% lower RMSE) and had zero decreases across 756 ensemble checks. Ordinary residual models had slightly lower point RMSE but decreased in 19.0% of checks. In a separate frozen-weight transfer test, all four EKI models had higher RMSE than persistence. [Numerical results, response magnitudes and transfer boundaries](supplements/ltpp/).
+On 63 targets from 26 sections in seven held-out states, locally fitted EKI reduces RMSE by **29.0–39.1%** relative to direct-depth neural models. All four EKI backbones outperform persistence. Anchored models have slightly lower RMSE than EKI, by 0.0007–0.0166 mm. EKI retains zero violations in 756 ensemble checks, whereas anchored models decrease in 144 checks (19.0%). Local fitting preserves anchoring's accuracy benefit and MLT's response consistency without the extra accuracy beyond OA seen on RIOHTrack.
+
+Frozen RIOHTrack weights are evaluated on a separate cohort of **45 targets from 12 sections**. All four EKI models have higher RMSE than persistence, and 41 intervals exceed the source training duration range. This evaluates weight transfer on a different cohort, rather than a paired effect of local retraining. [Full LTPP results, cohorts and data sources](supplements/ltpp/README.md)
+
+## Interpretation and application conditions
+
+The results support reuse of the three-module design across the tested neural architectures. OA contributes most of the accuracy gain, LME represents structural composition, and MLT enforces the direction of current-exposure effects. They need not improve the same metric. Additional accuracy beyond OA depends on the monitoring setting, as shown by missed inspections and locally fitted LTPP models.
+
+The direct-depth neural baselines are weaker than persistence under the matched budget. Percentage improvements describe those fitted configurations. RIOHTrack structures share weather and loading, and the LTPP cohort has one geographic split. The fixed temperature hinge has no consistently separable accuracy benefit in the ablations. The learned terms and embeddings do not identify layer-specific deformation mechanisms.
+
+EKI contains approximately 17k–72k parameters. Its measured inference time is higher than the anchored counterpart despite similar parameter counts. Attribution is more stable across seeds under a fixed background, but no general improvement is established when the background changes. [Computational cost](results/tables/cost_summary.csv) · [Attribution stability](results/tables/attribution_background_stability.csv) · [Inference scope](PROTOCOL.md#study-status-and-inferential-scope)

@@ -1,0 +1,40 @@
+{
+  "scope": "Verified complete four-backbone module comparison tables",
+  "training_source_revision": "4d556de52111bb8d0ac1d42d56fabd915afcb169",
+  "primary_targets": 2089,
+  "held_out_structures": 15,
+  "seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "configurations": 39,
+  "new_fits": 425,
+  "replayed_models": 950,
+  "inference_scope": "Retrospective descriptive module extension; original P1/P2 retained.",
+  "numerical_tables_modified": false,
+  "files": [
+    {
+      "path": "tables/summary.csv",
+      "bytes": 9480,
+      "sha256": "9ea264c48d1c8d02c79580346b6cf5ba67a6e78fdcfce019aae1520bcf6ce5af"
+    },
+    {
+      "path": "tables/contrasts.csv",
+      "bytes": 5523,
+      "sha256": "40fba49804138415dbeafb3dce1836bfe43f02d422d837137dedc9895678f861"
+    },
+    {
+      "path": "tables/by_structure.csv",
+      "bytes": 58194,
+      "sha256": "4a16733099262f12a86e2afc4c334c9643f14f5b383316c707a7a85a669efbb8"
+    },
+    {
+      "path": "tables/embedding.csv",
+      "bytes": 694,
+      "sha256": "c2401326383f952dce5e6f8e5a659e6b39f0dec7a07574bf782dcecaf6d0c0c0"
+    }
+  ]
+}

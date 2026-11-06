@@ -1,102 +1,89 @@
-# Method and evaluation
+# Engineering-knowledge interface
 
-## Modular engineering-knowledge embedding
+## Architecture
 
-EKI predicts rutting depth from an observation reference, a signed context adjustment
-and an exposure-driven response:
+EKI connects three engineering modules to a neural encoder of the preceding six exposure intervals. MLP, GRU, LSTM and Transformer encoders each produce a 64-dimensional history representation. This representation, the latest measured depth, the peak-to-latest gap, interval duration and a 16-dimensional structural representation form the context $c_t$.
 
-$$\widehat y_t=y_{t-1}+b_\theta(c_t)+G_t,\qquad
-G_t=\sum_j\Delta N_j\,a_\theta(c_t)\,h_\theta(T_j).$$
+$$\widehat y_t=y_{t-1}+b(c_t)+G_t,\qquad G_t=a(c_t)\sum_{j=1}^{d_t}\Delta N_j h(T_j).$$
 
-Context combines six historical exposure steps, latest depth, peak–latest discrepancy,
-layer–material structure representation and known interval duration. Current-interval
-load and temperature are excluded from context. The rate is nonnegative; temperature
-modulation is nonnegative and nondecreasing. Thus, at fixed context and duration, the
-prediction is nondecreasing in current exposure. The terms are learned response
-components, not separately identified physical deformation states.
+Current-interval load and temperature enter only through $G_t$. The signed correction $b(c_t)$ permits measured depth decreases between inspections. The learned correction and exposure terms are model components, not separately measured deformation mechanisms.
 
-## Comparison design
+### Observation anchoring (OA)
 
-| Arm | Prediction | Purpose |
+The latest measured depth $y_{t-1}$ is added directly to the output. Context includes that depth and the peak-to-latest gap $p_{t-1}-y_{t-1}$. The network estimates an adjustment to the measured starting condition. A zero adjustment reproduces persistence.
+
+### Layer–material encoding (LME)
+
+A shared 19–32–16 mapping encodes each active material–layer slot using its identity and transformed thickness. Within each layer, encoded slots are averaged with normalized thickness weights. Four pooled layer vectors and five thickness totals are projected to a 16-dimensional representation. Thickness totals retain absolute material amounts, while pooling represents relative composition. Empty layers contribute zero vectors. RIOHTrack and locally fitted LTPP models use their respective material vocabularies with the same encoding operations.
+
+### Monotonic load–temperature pathway (MLT)
+
+$$h(T)=1+\operatorname{softplus}(\theta_\gamma)\frac{\max(0,T-25)}{\sigma},\qquad
+a(c_t)=0.01\operatorname{softplus}(r(c_t)).$$
+
+Here $\sigma=\max(\mathrm{SD}(T),1\,{}^\circ\mathrm C)$ is estimated from fitting data and held fixed during inference. Daily loads are nonnegative and expressed in units of 10,000 applications. Interval load totals are distributed uniformly across days. The temperature hinge at 25 °C is a fixed modeling choice, not an estimated universal material threshold.
+
+With context, interval duration, preprocessing and fitted parameters fixed, increasing any daily load or temperature cannot lower the forecast. Equal-weight ensembles preserve this property. Changes in the inspection origin change the context, so successive forecasts are not required to be monotonic in time. The response guarantee follows from exposure routing and coefficient signs; removing the observation offset alone does not remove it.
+
+[Core implementation](models.py) · [Prepared inputs](data/) · [Machine-readable configuration](protocol.json)
+
+## Comparators and module ablations
+
+The manuscript names below map to the stored arm identifiers, which remain unchanged for reproducibility.
+
+| Manuscript name | Stored arm | Definition |
 |---|---|---|
-| A0 | Direct depth from the available inputs | Generic learner reference |
-| A2 | Latest depth plus a free learned increment | Observation-reference bridge |
-| A1 | Latest depth plus context and constrained exposure response | Complete EKI |
-| A3 | EKI routing with unconstrained rate/temperature coefficients | Shape-constraint comparison |
-| A4 / A5 | Residual XGBoost / persistence | Competitive and no-change references |
-| A6 / A7 | Remove current temperature modulation / use flat structure | Component comparisons for MLP and GRU |
+| Direct-depth neural model / generic backbone | A0 | Unconstrained depth prediction with the available observation, structure and exposure inputs |
+| Anchored model / observation-referenced generic model | A2 | Latest measured depth plus an unconstrained learned adjustment |
+| EKI | A1 | OA, LME and MLT with the selected history backbone |
+| No signs | A3 | Same routed pathway with unconstrained rate and temperature coefficients |
+| No heat | A6 | No current-interval temperature modulation; historical temperature remains available |
+| Flat | A7 | Flat structural encoding in place of LME |
+| No offset | NOANCHOR | EKI with the measured-depth output offset removed; measured context remains available |
+| Free path | FREEPATH | Anchoring and LME with an unconstrained readout receiving current exposure summaries |
+| Soft | SOFT | Routed signed pathway trained with a fixed monotonicity penalty |
+| Anchored XGBoost | A4 | Tree prediction of change from the latest measured depth |
+| Monotonic anchored XGBoost | TREE_MONO | Positive constraints on the two current-exposure summary features |
+| Persistence | A5 | Repeat the latest measured depth |
 
-A0 and A2 share inputs, backbone, head dimensions, initialization rules, optimizer,
-learning-rate candidates and training budget. Their output reference/target parameterization
-differs. A1 changes the combined representation and response design. Models are fitted
-independently with inner selection; shared budget does not imply globally optimal tuning.
-Historical temperature remains available in A6. A3 preserves exposure routing while
-relaxing coefficient sign constraints.
+The six neural ablations are evaluated on all four backbones. Direct-depth and anchored baselines receive the same source information and training budget. The [module supplement](supplements/modules/README.md) provides all 39 configuration summaries and paired comparisons. Changing a complete component may change several connected operations, so sequential contrasts are not additive causal shares.
 
 ## Data and validation
 
-RIOHTrack contains 19 structures and 2,753 observations, yielding 2,734 transitions.
-Five outer structure-held-out folds evaluate 15 structures; STR4/5/9/14 remain training
-anchors. Inner structure splits determine preprocessing, learning rate and epoch selection;
-selected configurations are refitted on outer training structures. Seeds 42–46 are
-equally averaged in millimetres. The main evaluation uses 2,089 dated targets and the
-sensitivity analysis 2,164 targets.
+RIOHTrack contains 2,753 rut-depth observations from 19 structures. Five outer folds hold out three structures each; STR4, STR5, STR9 and STR14 remain in training for material coverage. Inner structure splits determine preprocessing, learning rate and checkpoint. Selected configurations are refitted on all outer-training structures. Seeds 42–46 are equally averaged in millimeters. The primary set contains 2,089 dated targets; 2,164 targets are used for the archived-interval sensitivity analysis.
 
-Daily internal temperature represents 4 cm depth. Coverage below 80% uses a flagged
-archive proxy. The mean-temperature threshold proxy is distinct from a 10-minute
-degree-hour integral. Load is distributed uniformly within each observation interval.
-Original sensor workbooks are not duplicated; numerical inputs and provenance hashes
-are supplied. Repository access does not grant a new licence to upstream datasets.
+Daily pavement temperature represents 4 cm depth. Sensor coverage below 80% triggers a flagged archive proxy. Source flags distinguish provenance and do not enter the models. Original sensor workbooks are not duplicated; prepared inputs and source hashes are supplied. Upstream dataset access terms continue to apply.
 
-## Metrics and statistical comparisons
+Local LTPP fitting uses 177 targets from 64 sections in 26 states, partitioned into 80 training, 34 validation and 63 test targets. States are disjoint between partitions. A separate frozen-weight cohort contains 45 targets from 12 sections, excluded from local fitting and testing. [Cohorts, source fields and results](supplements/ltpp/README.md)
 
-The structure-balanced skill is
+## Accuracy and statistical inference
 
-`skill = 1 - mean_s(MSE_model,s) / mean_s(MSE_persistence,s)`.
+RMSE is the square root of the mean of structure-level MSEs, and skill is
 
-Balanced RMSE is the square root of mean structure MSE. MAE, increment R², structure
-wins, coverage, MPIW and MIS95 supplement the main metric. Bootstrap resampling uses
-10,000 paired structure draws; seeds and individual observations are not independent units.
+$$\mathrm{Skill}=1-\frac{\operatorname{mean}_s(\mathrm{MSE}_{f,s})}{\operatorname{mean}_s(\mathrm{MSE}_{\mathrm{persistence},s})}.$$
 
-- **Original P1:** four-backbone A1-versus-A2 superiority conjunction.
-- **Original P2:** four-backbone A1-versus-A3 noninferiority conjunction, margin −0.03 skill.
-  Each conjunction uses the maximum one-sided boundary-centred bootstrap reference p;
-  Holm correction is applied across P1/P2.
-- **Direct-depth supplementary comparison:** four A1-versus-A0 contrasts, Holm-adjusted
-  across the four backbones. All must have positive direction and adjusted p ≤ 0.05.
-  This is a separate family and does not replace P1/P2.
+LTPP uses road sections as the averaging groups. MAE, depth and increment $R^2$, wins against persistence and per-group errors complement RMSE and skill. Depth $R^2$ pools observations; increment $R^2$ uses group-balanced errors and within-group increment variance. Their distinct denominators are retained.
 
-Percentile 95% intervals and other comparisons are descriptive. Reference p values are
-not distribution-free exact tests. Full configuration is in [protocol.json](protocol.json),
-[execution_addendum.md](execution_addendum.md) and the
-[direct-depth protocol](supplements/direct-depth/protocol.json).
+P1 tests EKI superiority to anchoring alone jointly across the four backbones. P2 tests non-inferiority to No signs with a −0.03 skill margin. Each uses 10,000 paired structure bootstraps, the maximum one-sided boundary-centered reference p value across backbones, and Holm correction across the two conjunctions. EKI versus direct-depth comparisons form a separate four-test Holm family. Other module and scenario intervals are descriptive. [Conjunctions](results/tables/primary_conjunctions.csv) · [Backbone contrasts](results/tables/primary_backbone_contrasts.csv) · [Direct-depth contrasts](supplements/direct-depth/results/tables/supplementary_primary_contrasts.csv)
 
-## Inference scenarios and uncertainty
+## Response checks and prediction intervals
 
-Actual-temperature, historical-calendar and recent-temperature rollout scenarios use
-the same supplied future loads. Strict historical-calendar inputs only access supporting
-records available before the forecast origin; origins without support remain unavailable.
-LOYO uses other years and is retrospective. All scenario comparisons use their designated
-common target sets. Missing-inspection tests reconstruct exposures; late-load analysis
-is retrospective. Class holdouts evaluate internal category transfer.
+Exposure checks increase daily load by 10% or 50%, or daily temperature by 5 °C, holding other inputs fixed. A decrease exceeding `1e-6 × max(1, abs(baseline prediction in mm))` counts as a violation. Individual-fit and ensemble counts are reported separately. Violation rates count checks without the structure weighting used for accuracy.
 
-Fitted models are reused for inference. Empirical intervals use structure-balanced
-absolute residual quantiles of selected inner ensembles, separately by scenario and
-horizon. Model selection and calibration share inner data, so coverage is not guaranteed.
+Empirical 95% intervals use the weighted 0.95 quantile of absolute inner-validation ensemble residuals, separately by model, scenario and horizon. Evaluation reports mean and worst-group coverage, mean prediction interval width (MPIW) and mean interval score (MIS95). Calibration and model selection share validation data, so coverage is assessed empirically.
+
+## Monitoring conditions
+
+Multistep predictions update the latest depth and running maximum with the five-model ensemble prediction. Future measured depths are excluded. Historical-calendar, recent-temperature continuation and realized-temperature scenarios use identical supplied future loads. Historical-calendar temperatures use records available before the prediction origin; other-year temperature sensitivity is retrospective. Comparisons use the designated common target sets.
+
+A missing inspection merges adjacent intervals and removes the omitted depth from both the anchor and peak history. Late-loading evaluation uses observations after 75% of eventual loading as a retrospective stratum. Class holdouts evaluate internal structural transfer. Scenarios reuse fitted models. [Scenario results](RESULTS.md#monitoring-conditions)
 
 ## Study status and inferential scope
 
-The original RIOHTrack evaluation is a single-site exploratory study. The direct-depth comparison was specified
-and frozen after the initial EKI results were available, but before its new direct-baseline
-fits; it is not an independent confirmation of the original study. Numerical configurations
-and comparison rules were frozen for each experimental block. The presentation emphasizes
-the complete framework, while the original tests and the supplementary statistical family
-retain their distinct roles.
+RIOHTrack is a single-site exploratory evaluation on previously examined data. The direct-depth comparison and complete module extension were specified after earlier study results, with their configurations fixed before their new fits. They retain their separate statistical roles. Shared weather, loading and overlapping training sets limit independence between held-out structures.
 
-Shared loading/climate and overlapping training sets limit independence. A separate LTPP evaluation uses independent road sections for locally fitted method replication and a distinct frozen-weight transfer assessment. No evaluation against human experts was performed. The title refers
-to domain specialization, not demonstrated equivalence to experts or replacement of
-inspection equipment. Formula-based consistency is separate from mechanism identification.
+LTPP supplies independent road records with local fitting and one geographic split. The design is reused across architectures and datasets; its learned parameters remain application-specific. Conditional monotonicity describes model behavior at fixed context and is distinct from identifying a physical mechanism or a causal exposure effect. [Complete results and application conditions](RESULTS.md)
 
-## LTPP replication
+## Related methodological foundations
 
-The locally fitted study uses 64 sections in 26 states. Training, validation and testing use disjoint states. The 12 sections in the frozen-weight study are excluded throughout local fitting and testing. All results are descriptive. [Cohort, source fields, training and perturbation definitions](supplements/ltpp/).
+The manuscript discusses local referencing alongside [NLinear](https://doi.org/10.1609/aaai.v37i9.26317) and [RevIN](https://openreview.net/forum?id=cGDAkQo1C0p), and shape constraints alongside [monotonicity regularization](https://proceedings.mlr.press/v180/monteiro22a.html), [constrained monotonic networks](https://proceedings.mlr.press/v202/runje23a.html) and [monotonic XGBoost](https://xgboost.readthedocs.io/en/stable/tutorials/monotonic.html). EKI combines observation anchoring, pavement composition and routed exposure response within a shared engineering design.

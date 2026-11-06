@@ -1,12 +1,12 @@
-# Direct-depth, observation-residual and EKI comparison
+# Direct-depth, anchored and EKI comparison
 
 This evaluation tests the complete EKI framework against information-matched generic
-direct-depth learners, with observation-residual networks as an intermediate reference.
+direct-depth learners, with anchored networks as an intermediate reference.
 It covers MLP, GRU, LSTM and Transformer backbones under the same grouped validation.
 
 RMSE in millimetres, 2,089 dated targets and five-seed ensembles:
 
-| Backbone | Direct depth A0 | Observation residual A2 | Full EKI A1 | Reduction: A0 → A1 |
+| Backbone | Direct depth A0 | Anchored (OA) A2 | EKI A1 | Reduction: A0 → A1 |
 |---|---:|---:|---:|---:|
 | MLP | 0.56436 | 0.31186 | **0.28504** | **49.49%** |
 | GRU | 0.68053 | 0.33026 | **0.29049** | **57.31%** |
