@@ -1,6 +1,6 @@
 {
   "scope": "Manuscript-aligned documentation and navigation; module numerical tables have their own SOURCE.json",
-  "base_commit": "6f0cd25eae9c39a0c2ea093e7df7a5d770af0c66",
+  "base_commit": "c8fa23003a3a390aac7484568be2b8e9b49d7a4c",
   "files": [
     {
       "path": "MANUSCRIPT_GUIDE.md",
@@ -14,8 +14,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3843,
-      "sha256": "1884f127223a065d75814a266dc34a7a662c307ee7c578367099fa311fd6b5c6"
+      "bytes": 2976,
+      "sha256": "8ceecf89320cf44e05ae86e4e5073a2cb4995f4037bf01864e1558b54c5cc5d4"
     },
     {
       "path": "REPRODUCTION.md",
@@ -57,5 +57,6 @@
       "bytes": 2530,
       "sha256": "df43b08d6573e77c958e117caa02d667c3ff98c29057c5b463117205e35197a2"
     }
-  ]
+  ],
+  "cover_figures_manifest": "assets/readme/SOURCE.json"
 }

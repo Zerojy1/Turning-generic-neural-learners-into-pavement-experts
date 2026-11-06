@@ -1,0 +1,20 @@
+{
+  "manuscript_title": "Reusable engineering-knowledge modules for reliable neural rutting forecasting",
+  "conversion": "Original manuscript EMF figures rasterized on white at 2000 pixels wide. Plot content, labels and values unchanged.",
+  "figures": [
+    {
+      "path": "riohtrack_accuracy.png",
+      "manuscript_figure": 5,
+      "source_embedded_media": "word/media/image5.emf",
+      "source_emf_sha256": "aa63cc0e2c7d41fff52ebbafd372e3d1b4749f67a721fa3a8148b395cb58b320",
+      "png_sha256": "ecd82873516eaaf7c18882a8a7f16884151134e020287ebae5db072e6b04561f"
+    },
+    {
+      "path": "cross_dataset_results.png",
+      "manuscript_figure": 14,
+      "source_embedded_media": "word/media/image14.emf",
+      "source_emf_sha256": "adad1d546324963787276dadfc7858a158f16630bcd4e9c0de3b134cf3c20a44",
+      "png_sha256": "3c0a610d2cfb996215be79a4bc3f5fcef9277590048db7129c095bfcffa70b73"
+    }
+  ]
+}

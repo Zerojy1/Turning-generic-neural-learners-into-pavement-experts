@@ -1,45 +1,34 @@
 # Reusable engineering-knowledge modules for reliable neural rutting forecasting
 
-**Pavement knowledge, shared across neural architectures.**
+**Better rutting forecasts across four neural backbones, with engineering-consistent exposure responses.**
 
-The engineering-knowledge interface (**EKI**) combines three reusable modules with MLP, GRU, LSTM and Transformer backbones. It gives each forecaster an explicit way to use the latest inspection, represent pavement composition and control the direction of load–temperature responses. The module equations and connections are shared across architectures; each complete model is fitted independently.
+EKI integrates observation anchoring, layer–material encoding and a monotonic load–temperature pathway with **MLP, GRU, LSTM and Transformer**. The same engineering design is fitted independently with each backbone.
 
-[Method](PROTOCOL.md) · [Results](RESULTS.md) · [Paper-to-code guide](MANUSCRIPT_GUIDE.md) · [Data and reproduction](REPRODUCTION.md)
+## Main results
 
-## Three complementary engineering modules
+| Accuracy on RIOHTrack | Accuracy on LTPP | Engineering consistency |
+|:---:|:---:|:---:|
+| **49.5–57.3% lower RMSE** | **29.0–39.1% lower RMSE** | **Zero decreasing responses** |
+| Across all four backbones | Across all four locally fitted backbones | In the specified load and temperature checks |
 
-| Module | Engineering knowledge | Role in the forecast |
-|---|---|---|
-| **Observation anchoring (OA)** | The latest inspection records the current pavement condition | Carries measured depth into the output and learns the subsequent adjustment |
-| **Layer–material encoding (LME)** | Material, layer position and thickness jointly describe pavement composition | Builds a shared structural representation using thickness-weighted layer pooling |
-| **Monotonic load–temperature pathway (MLT)** | Increased exposure should not lower the forecast under otherwise fixed conditions | Accumulates daily load through a nonnegative rate and a nondecreasing temperature factor |
+RMSE reductions are relative to matched direct-depth neural models. RIOHTrack evaluates **2,089 targets from 15 held-out structures**; LTPP evaluates **63 targets from 26 sections in seven held-out states** after local retraining. All four EKI backbones outperform persistence on both evaluations.
 
-$$\widehat y_t = y_{t-1} + b(c_t) + G_t,\qquad G_t = a(c_t)\sum_j\Delta N_j h(T_j).$$
+## Accuracy across four neural backbones
 
-The backbone encodes the preceding exposure history. Current-interval load and temperature enter only through MLT. With history, structure and interval duration fixed, the response is monotonic by construction. [Architecture, equations and module comparisons](PROTOCOL.md)
+![One-step RIOHTrack RMSE for direct-depth, observation-referenced and EKI models, with anchored XGBoost and persistence references](assets/readme/riohtrack_accuracy.png)
 
-## Results across backbones and monitoring datasets
+**EKI reaches 0.2850–0.2937 mm RMSE on RIOHTrack.** Beyond observation anchoring alone, the complete interface reduces RMSE by a further **4.0–14.4%**. The chart shows structure-balanced errors from five-seed ensembles. [Numerical results](RESULTS.md#forecast-accuracy-across-neural-backbones)
 
-| Evaluation | RIOHTrack | LTPP with local fitting |
-|---|---|---|
-| Held-out evaluation | 2,089 targets, 15 structures | 63 targets, 26 sections in 7 states |
-| RMSE reduction versus matched direct-depth neural models | **49.5–57.3%** | **29.0–39.1%** |
-| EKI RMSE | **0.2850–0.2937 mm** | **1.0080–1.0835 mm** |
-| EKI versus anchoring alone | **4.0–14.4% lower RMSE** | 0.0007–0.0166 mm higher RMSE |
-| Decreasing responses in EKI exposure checks | **0 / 125,340** individual-fit checks | **0 / 756** ensemble checks |
+## Accuracy and response consistency across datasets
 
-All four EKI backbones improve on persistence in both evaluations. On RIOHTrack, mean coverage of nominal 95% one-step prediction intervals is **95.0–95.3%**. Accuracy, response direction and interval calibration are assessed separately, allowing the modules' complementary contributions to be examined.
+![EKI accuracy gains and ensemble exposure-response checks on RIOHTrack and locally fitted LTPP models](assets/readme/cross_dataset_results.png)
 
-The complete results include four-backbone ablations, soft monotonicity penalties, monotonic XGBoost, inspection gaps and multistep forecasts. Benefits beyond anchoring depend on the monitoring setting; local LTPP fitting preserves response consistency without an additional accuracy gain over the anchored baseline. [Full comparisons and application conditions](RESULTS.md)
+**The monotonic pathway guarantees nondecreasing exposure responses at a fixed prediction origin.** Audits confirm zero EKI violations in **125,340 individual-fit checks** on RIOHTrack and **756 ensemble checks** on locally fitted LTPP models. The heatmaps above use ensemble rates for both datasets. RIOHTrack one-step prediction intervals also attain **95.0–95.3% mean coverage** at the nominal 95% level. [Full accuracy and reliability comparisons](RESULTS.md)
 
-## Explore the study
+## Reusable engineering modules
 
-| To examine | Start here |
-|---|---|
-| Cross-backbone accuracy and prediction intervals | [RIOHTrack results](RESULTS.md) |
-| OA, LME and MLT contributions | [Module comparisons and original result tables](supplements/modules/README.md) |
-| Independent highway data, local fitting and frozen-weight transfer | [LTPP evaluation](supplements/ltpp/README.md) |
-| A particular figure or table in the paper | [Paper-to-code guide](MANUSCRIPT_GUIDE.md) |
-| Prepared inputs, models, checksums and replay commands | [Reproduction](REPRODUCTION.md) |
+**OA — Observation anchoring** carries the latest measured depth into the forecast. **LME — Layer–material encoding** represents pavement composition through shared encoding and thickness-weighted pooling. **MLT — Monotonic load–temperature pathway** controls how current exposure affects the output.
 
-The study evaluates reuse of an engineering design across four neural architectures and two monitoring datasets. Learned weights are fitted for each application. [Validation protocol and scope](PROTOCOL.md#study-status-and-inferential-scope)
+[Method and validation](PROTOCOL.md) · [Module ablations](supplements/modules/README.md) · [LTPP evaluation](supplements/ltpp/README.md) · [Paper-to-code guide](MANUSCRIPT_GUIDE.md) · [Data, models and reproduction](REPRODUCTION.md)
+
+Complete comparator results and conditions of use are provided in [Results](RESULTS.md), including comparisons with anchoring alone, missed inspections and frozen-weight transfer.
